@@ -1,0 +1,19 @@
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+footer {
+  background-color: #00ab61;
+  position: absolute;
+  bottom: 0;
+  color: white;
+}
+
+svg {
+  color: white;
+}
