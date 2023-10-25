@@ -1,12 +1,23 @@
 .navbar {
-  height: 80px;
+  height: 100%;
+}
+
+.navbar-brand-container{
+  height: 100%;
 }
 
 .navbar-brand img {
-  height: 60px;
-  box-sizing: border-box;
+  height: 40px;
 }
 
+@media screen and (max-width: 1024px) {
+  .navbar-brand img {
+    height: 35px;
+  }
+}
 
-
-
+@media screen and (max-width: 768px) {
+  .navbar-brand img {
+    height: 25px;
+  }
+}
