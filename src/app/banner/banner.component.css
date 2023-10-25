@@ -1,0 +1,6 @@
+.banniere-home-page {
+  height: 50vh;
+  background-image: url("../../assets/banniere-header-2000.png");
+  background-size: cover;
+  background-position: 0% 50%;
+}
