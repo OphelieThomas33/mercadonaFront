@@ -4,7 +4,6 @@ import { ListProductComponent } from './list-product/list-product.component';
 
 
 
-
 @NgModule({
   declarations: [
     ListProductComponent,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PRODUCTS } from '../mock-product-list';
 import { Product } from '../product';
+import { ProductService } from '../product.service';
 
 
 @Component({
@@ -9,10 +9,16 @@ import { Product } from '../product';
   styleUrls: ['./list-product.component.css']
 })
 export class ListProductComponent implements OnInit {
-  productList: Product[] = PRODUCTS;
 
-  ngOnInit(): void {
-      console.table(this.productList);
-  }
+  productList: Product[];
+
+  constructor(
+    private productService: ProductService
+    ) {}
+
+    ngOnInit():void {
+      this.productService.getProducts()
+        .subscribe(productList => this.productList = productList);
+    }
 
 }
