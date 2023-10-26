@@ -20,6 +20,5 @@ export class ListProductComponent implements OnInit {
       .subscribe(productList => {
         this.productList = productList;
       });
-    console.table(this.productList)
   }
 }
