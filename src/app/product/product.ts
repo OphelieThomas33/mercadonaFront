@@ -5,5 +5,7 @@ export class Product {
     price: number;
     image: string;
     category: string[];
-    discount: number|null;
+    has_valid_discount: boolean;
+    discount: []|null;
+    discounted_price: number|null;
 }

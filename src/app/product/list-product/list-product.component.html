@@ -1,4 +1,10 @@
-<div class="list-product" *ngFor="let product of productList">
-  {{ product.label }}
-  <p>BIENVENUE</p>
+<h3>Nos produits</h3>
+
+
+<div class="list-product" *ngFor="let product of productList" >
+  <div *ngIf="product.has_valid_discount">
+    {{ product.label }}
+    {{ product.price }}
+    {{ product.image }}
+  </div>
 </div>

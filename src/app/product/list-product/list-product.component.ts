@@ -13,12 +13,13 @@ export class ListProductComponent implements OnInit {
   productList: Product[];
 
   constructor(
-    private productService: ProductService
-    ) {}
+    private productService: ProductService) {}
 
-    ngOnInit():void {
-      this.productService.getProducts()
-        .subscribe(productList => this.productList = productList);
-    }
-
+  ngOnInit():void {
+    this.productService.getProducts()
+      .subscribe(productList => {
+        this.productList = productList;
+      });
+    console.table(this.productList)
+  }
 }
