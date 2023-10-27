@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, KeyValueDiffers, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
+import { KeyValuePipe } from '@angular/common';
 
 
 @Component({
@@ -12,8 +13,7 @@ export class ListProductComponent implements OnInit {
 
   productList: Product[];
 
-  constructor(
-    private productService: ProductService) {}
+  constructor(private productService: ProductService,) {}
 
   ngOnInit():void {
     this.productService.getProducts()
@@ -22,3 +22,5 @@ export class ListProductComponent implements OnInit {
       });
   }
 }
+
+
