@@ -1,8 +1,6 @@
-import { Component, KeyValueDiffers, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
-import { KeyValuePipe } from '@angular/common';
-
 
 @Component({
   selector: 'mcd-list-product',

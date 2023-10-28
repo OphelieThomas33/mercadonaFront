@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListProductComponent } from './list-product/list-product.component';
+import { HomePageComponent } from '../home-page/home-page.component';
 
 
 
@@ -9,7 +10,10 @@ import { ListProductComponent } from './list-product/list-product.component';
     ListProductComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+  ],
+  exports: [
+    ListProductComponent,
   ]
 })
 export class ProductModule { }

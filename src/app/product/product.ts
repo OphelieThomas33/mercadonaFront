@@ -6,6 +6,8 @@ export class Product {
   image: string;
   category: [{
     label: string,
+    parent:string|null;
+    icon: string;
   }];
   has_valid_discount: boolean;
   discount: {

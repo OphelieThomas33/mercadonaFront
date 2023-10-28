@@ -5,9 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { BannerComponent } from './banner/banner.component';
 import { ProductModule } from './product/product.module';
 import { HttpClientModule } from '@angular/common/http';
+import { BannerComponent } from './banner/banner.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 
 @NgModule({
@@ -15,14 +17,16 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     BannerComponent,
+    CategoryListComponent,
+    HomePageComponent,
     FooterComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    ProductModule,
     AppRoutingModule,
-  ],
+    ProductModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
