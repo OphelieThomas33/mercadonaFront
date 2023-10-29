@@ -1,1 +1,24 @@
-<p>category-list works!</p>
+<div class="categories-list">
+
+  <h3 class="mb-1 pt-3 ps-3">Catégories</h3>
+
+
+  <div class="d-flex justify-content-between">
+    <ng-container *ngFor="let category of categoriesList">
+      <div *ngIf="category.parent==null">
+        <div class="d-flex flex-column card card-body text-center py-8">
+          <div class="parent-category">
+            <a (click)="showSubcategories = !showSubcategories">
+              <div class="card-body text-center py-8">
+                <img img [src]="category.icon" alt="image of category" class="mb-3">
+                <div class="text-white fs-5">{{category.label}}</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<div>
+

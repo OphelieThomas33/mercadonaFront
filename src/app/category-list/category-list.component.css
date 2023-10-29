@@ -1,0 +1,23 @@
+.categories-list {
+  background-color: #00ab61;
+}
+
+.card {
+  border: none;
+}
+
+button {
+  background-color: #00ab61;
+  border: 0px;
+}
+
+a {
+  list-style: none;
+  text-decoration: none;
+}
+h3 {
+  color: white;
+}
+.card {
+  background-color: #00ab61;
+}
