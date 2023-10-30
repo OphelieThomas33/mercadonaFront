@@ -5,12 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { ProductModule } from './product/product.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BannerComponent } from './banner/banner.component';
-import { CategoryListComponent } from './categories/categories-list/category-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
-
+import { DiscountPageComponent } from './discount-page/discount-page.component';
+import { CatalogModule } from './catalog/catalog.module';
 
 @NgModule({
   declarations: [
@@ -18,14 +17,14 @@ import { HomePageComponent } from './home-page/home-page.component';
     HeaderComponent,
     HomePageComponent,
     BannerComponent,
-    CategoryListComponent,
+    DiscountPageComponent,
     FooterComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ProductModule,
+    CatalogModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

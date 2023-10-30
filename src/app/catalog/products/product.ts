@@ -4,7 +4,14 @@ export class Product {
   description: string;
   image: string;
   price: number;
-  category: [];
+  category: [{
+    id: number,
+    label: string,
+    parent:number|null,
+    icon: string,
+    subcategories: [],
+    products: []
+  }];
   has_valid_discount: boolean;
   discount: {
     start_date: Date,
