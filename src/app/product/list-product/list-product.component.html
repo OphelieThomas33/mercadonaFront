@@ -12,13 +12,13 @@
                   </div>
                 </div>
             </div>
-          <a href="#!"> <img [src]="product.image" alt="Image of product" class="mb-3 img-fluid"></a>
+          <img [src]="product.image" alt="Image of product" class="mb-3 img-fluid">
         </div>
         <h2 class="fs-6">{{ product.label }}</h2>
         <div class="d-flex mt-3 justify-content-between">
             <div class="d-flex align-self-start flex-column justify-content-end">
               <div class="m-0 p-0" *ngFor="let category of product.category">
-                <span  class="categories fw-lighter p-0 m-0"> {{ category.label }} </span>
+                <span  class="categories fw-lighter p-0 m-0"> {{ category }} </span>
               </div>
             </div>
             <div class="d-flex align-self-end align-content-end">

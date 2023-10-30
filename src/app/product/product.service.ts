@@ -19,4 +19,8 @@ export class ProductService {
     }
     return this.http.get<Product[]>(`${environment.apiUrl}/products/`, httpHeaders)
   }
+
+
+
+
 }

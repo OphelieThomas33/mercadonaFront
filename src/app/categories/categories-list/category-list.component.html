@@ -8,7 +8,7 @@
       <div *ngIf="category.parent==null">
         <div class="d-flex flex-column card card-body text-center py-8">
           <div class="parent-category">
-            <a (click)="showSubcategories = !showSubcategories">
+            <a (click)="getProductsByCategory(category)" id="category">
               <div class="card-body text-center py-8">
                 <img img [src]="category.icon" alt="image of category" class="mb-3">
                 <div class="text-white fs-5">{{category.label}}</div>
@@ -21,4 +21,5 @@
   </div>
 </div>
 <div>
+
 

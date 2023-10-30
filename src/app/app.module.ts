@@ -8,17 +8,17 @@ import { FooterComponent } from './footer/footer.component';
 import { ProductModule } from './product/product.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BannerComponent } from './banner/banner.component';
+import { CategoryListComponent } from './categories/categories-list/category-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { CategoryListComponent } from './category-list/category-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    HomePageComponent,
     BannerComponent,
     CategoryListComponent,
-    HomePageComponent,
     FooterComponent,
   ],
   imports: [
