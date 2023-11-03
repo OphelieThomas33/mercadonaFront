@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Product } from './product';
 import { Category } from '../categories/category';
 import { ProductService } from './product.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'mcd-products',
@@ -10,6 +11,7 @@ import { ProductService } from './product.service';
 })
 export class ProductsComponent {
 
+  envUrl : any = environment.apiUrl;
   products: Product[]
   @Input() category: Category;
   productsByCategory: Product[];
@@ -22,6 +24,8 @@ export class ProductsComponent {
         this.products = products;
       });
   }
+
+
 
   // getProductsByCategory(category: Category): Product[] {
   //   console.log(category.products)

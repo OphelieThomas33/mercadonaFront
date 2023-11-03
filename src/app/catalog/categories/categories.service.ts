@@ -12,24 +12,23 @@ export class CategoriesService {
   constructor(private http: HttpClient) {}
 
   getCategories(): Observable<Category[]> {
-    const httpHeaders = {
-        headers: new HttpHeaders()
-          // .set('Access-Control-Allow-Origin', 'http://mercadona-app.s3-website-us-east-1.amazonaws.com')
-          // .set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type')
-          // .set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS')
-    }
-    return this.http.get<Category[]>(`${environment.apiUrl}/categories/`, httpHeaders)
+    // const httpHeaders = {
+    //     headers: new HttpHeaders()
+    //       // .set('Access-Control-Allow-Origin', 'http://mercadona-app.s3-website-us-east-1.amazonaws.com')
+    //       // .set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type')
+    //       // .set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS')
+    // }
+    return this.http.get<Category[]>(`${environment.apiUrl}/api/categories/`)
   }
 
   getCategoryById(categoryId: number): Observable<Category> {
-
-    const httpHeaders = {
-      headers: new HttpHeaders({
-      // 'Access-Control-Allow-Origin':'*',
-      // 'Access-Control-Allow-Headers': 'Accept, same-origin, Accept-Language, Content-Language, Content-Type, X-Requested-With, X-Content-Type-Options',
-      // 'Access-Control-Allow-Methods': 'GET, PUT, PATCH, DELETE, HEAD, OPTIONS'
-    })
-  }
-    return this.http.get<Category>(`${environment.apiUrl}/categories/${categoryId}/`, httpHeaders)
+  //   const httpHeaders = {
+  //     headers: new HttpHeaders({
+  //     'Access-Control-Request-Headers':'Accept, Cookie, origin',
+  //     'Access-Control-Allow-Method': 'GET, PUT, POST, DELETE, OPTIONS',
+  //     'Access-Control-Allow-Credentials': 'true'
+  //     })
+  // }
+    return this.http.get<Category>(`${environment.apiUrl}/api/categories/${categoryId}/`)
   }
 }
