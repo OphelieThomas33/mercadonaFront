@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../catalog/products/product';
-import { ProductService } from '../catalog/products/product.service';
+import { ProductService } from '../products/product.service';
+import { Product } from '../products/product';
+
 
 @Component({
   selector: 'mcd-home-page',

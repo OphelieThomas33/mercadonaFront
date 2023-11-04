@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Product } from '../catalog/products/product';
-import { ProductService } from '../catalog/products/product.service';
-import { Observable, filter, map } from 'rxjs';
+import { map } from 'rxjs';
+import { ProductService } from '../products/product.service';
+import { Product } from '../products/product';
 
 @Component({
   selector: 'mcd-discount-page',
