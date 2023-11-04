@@ -1,0 +1,15 @@
+h3 {
+  text-align: center;
+  color: #a81d32;
+}
+
+h5 {
+  margin-top: 0.5rem;
+  text-align: center;
+  color: #a81d32;
+  font-style: lighter;
+}
+
+.categories {
+  font-size: 0.75rem;
+}

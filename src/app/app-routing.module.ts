@@ -6,6 +6,7 @@ import { DiscountPageComponent } from './discount-page/discount-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent},
+  { path: 'catalogue', redirectTo: ''},
   { path: 'promotions', component: DiscountPageComponent},
 ];
 

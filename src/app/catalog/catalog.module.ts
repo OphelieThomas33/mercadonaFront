@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CategoriesComponent } from './categories/categories.component';
-import { ProductsComponent } from './products/products.component';
 import { CatalogComponent } from './catalog.component';
-import { ProductsByCategoryComponent } from './products-by-category/products-by-category.component';
-
-
+import { ProductsByCategoryComponent } from './products/products-by-category/products-by-category.component';
+import { ProductListComponent } from './products/product-list/product-list.component';
+import { CategoryListComponent } from './categories/category-list/category-list.component';
 
 @NgModule({
   declarations: [
     CatalogComponent,
-    CategoriesComponent,
-    ProductsComponent,
+    CategoryListComponent,
+    ProductListComponent,
     ProductsByCategoryComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     CatalogComponent,
+    CategoryListComponent,
+    ProductListComponent,
   ]
 })
 export class CatalogModule { }

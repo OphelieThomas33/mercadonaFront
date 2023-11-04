@@ -26,6 +26,9 @@ import { CatalogModule } from './catalog/catalog.module';
     AppRoutingModule,
     CatalogModule,
     ],
+  exports: [
+    BannerComponent,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./products-by-category.component.css']
 })
 export class ProductsByCategoryComponent {
+  title: string = "category.label";
 
 }

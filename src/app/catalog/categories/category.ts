@@ -4,5 +4,5 @@ export class Category {
   parent:number|null;
   icon: string;
   subcategories: [];
-  products: []
+  products: [];
 }
