@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { CatalogModule } from './catalog/catalog.module';
 import { UiModule } from './ui/ui.module';
+import { OtherPagesModule } from './other-pages/other-pages.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { UiModule } from './ui/ui.module';
     AppRoutingModule,
     CatalogModule,
     UiModule,
+    OtherPagesModule,
     ],
   exports: [
     UiModule,
