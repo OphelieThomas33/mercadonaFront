@@ -7,11 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { CatalogModule } from './catalog/catalog.module';
 import { UiModule } from './ui/ui.module';
-import { OtherPagesModule } from './other-pages/other-pages.module';
+import { PageNotFoundComponent } from './other-pages/page-not-found/page-not-found.component';
+import { ConditionsOfUseComponent } from './other-pages/conditions-of-use/conditions-of-use.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PageNotFoundComponent,
+    ConditionsOfUseComponent,
   ],
   imports: [
     BrowserModule,
@@ -19,7 +22,7 @@ import { OtherPagesModule } from './other-pages/other-pages.module';
     AppRoutingModule,
     CatalogModule,
     UiModule,
-    OtherPagesModule,
+
     ],
   exports: [
     UiModule,
