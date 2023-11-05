@@ -4,9 +4,10 @@ import { HomePageComponent } from './catalog/home-page/home-page.component';
 import { DiscountPageComponent } from './catalog/discount-page/discount-page.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent},
-  { path: 'catalogue', redirectTo: ''},
+  { path: 'catalogue', component: HomePageComponent },
+  { path: '', redirectTo: 'catalogue', pathMatch: 'full'},
   { path: 'promotions', component: DiscountPageComponent},
+
 ];
 
 @NgModule({

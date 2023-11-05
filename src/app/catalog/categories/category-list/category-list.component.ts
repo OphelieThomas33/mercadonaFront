@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Category } from '../category';
 
 import { CategoriesService } from '../categories.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mcd-category-list',
@@ -9,7 +10,6 @@ import { CategoriesService } from '../categories.service';
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent implements OnInit {
-
 
   categoriesList: Category[];
   category: Category | undefined;
@@ -23,31 +23,8 @@ export class CategoryListComponent implements OnInit {
       .subscribe(categoriesList => {
         this.categoriesList = categoriesList;
       });
-    this.category = undefined;
-
     }
 
-
-  selectCategory(category: Category): Category {
-    // this.selectedCategory = selectedCategory
-    // console.log(this.selectedCategory)
-    // return this.selectedCategory
-    this.category = category
-    console.log(category)
-    return category
-  }
-
-  // allProducts(): Category {
-  //   this.selectedCategory == null
-  //   console.log(this.selectedCategory)
-  //   return this.selectedCategory
-  // }
-
-
-    // getCategory(category: Category) {
-    //   this.router.navigate(['/categories', category.id])
-    // }
-
-  }
+ }
 
 

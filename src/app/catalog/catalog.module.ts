@@ -7,6 +7,12 @@ import { CategoryListComponent } from './categories/category-list/category-list.
 import { DiscountPageComponent } from './discount-page/discount-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { UiModule } from '../ui/ui.module';
+import { RouterModule, Routes } from '@angular/router';
+
+const catalogRoutes: Routes = [
+  { path: 'categories/:id', component: ProductsByCategoryComponent},
+  { path: 'products', component: HomePageComponent},
+];
 
 @NgModule({
   declarations: [
@@ -20,11 +26,10 @@ import { UiModule } from '../ui/ui.module';
   imports: [
     CommonModule,
     UiModule,
+    RouterModule.forRoot(catalogRoutes),
   ],
   exports: [
     CatalogComponent,
-    CategoryListComponent,
-    ProductListComponent,
   ]
 })
 export class CatalogModule { }

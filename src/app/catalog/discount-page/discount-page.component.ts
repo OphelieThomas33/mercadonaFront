@@ -10,7 +10,8 @@ import { Product } from '../products/product';
 })
 export class DiscountPageComponent  {
 
-  title: string = "EN PROMOTION"
+  title: string = "NOS PROMOTIONS";
+  subtitle: string = "";
   products: Product[];
   discountedProducts: Product[];
 

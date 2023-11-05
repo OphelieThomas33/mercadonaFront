@@ -10,14 +10,14 @@ import { Product } from '../products/product';
 })
 export class HomePageComponent implements OnInit {
 
-  title: string = "";
+  title: string = "NOS PRODUITS";
+  subtitle: string = "";
   products: Product[];
 
   constructor(private productService: ProductService,) {}
 
   ngOnInit():void {
     this.productList()
-    console.log(this.products)
   }
 
   productList(): void {
