@@ -9,12 +9,14 @@ import { CatalogModule } from './catalog/catalog.module';
 import { UiModule } from './ui/ui.module';
 import { PageNotFoundComponent } from './other-pages/page-not-found/page-not-found.component';
 import { ConditionsOfUseComponent } from './other-pages/conditions-of-use/conditions-of-use.component';
+import { LegalNoticesComponent } from './other-pages/legal-notices/legal-notices.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     ConditionsOfUseComponent,
+    LegalNoticesComponent,
   ],
   imports: [
     BrowserModule,
