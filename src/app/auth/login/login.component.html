@@ -1,0 +1,23 @@
+<div class="login container">
+  <h3>Login</h3>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="form-group">
+      <div class="mb-3">
+        <label for="username" class="form-label">Identifiant</label>
+        <input type="text" class="form-control" id="username"
+              required
+              formControlName="username"
+              >
+      </div>
+        <div class="mb-3">
+        <label for="password" class="form-label">Mot de passe</label>
+        <input type="password" class="form-control" id="password"
+              required
+            formControlName="password"
+            >
+      </div>
+      <button type="submit" class="btn btn-success" id="btn-login">Se connecter</button>
+      <!-- <div *ngIf="wrongCredentials">L'identifiant et/ou le mot de passe sont erronés</div> -->
+    </div>
+  </form>
+</div>

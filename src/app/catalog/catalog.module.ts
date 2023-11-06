@@ -8,10 +8,12 @@ import { DiscountPageComponent } from './discount-page/discount-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { UiModule } from '../ui/ui.module';
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 
 const catalogRoutes: Routes = [
+  { path: 'catalogue', component: HomePageComponent },
+  { path: '', redirectTo: 'catalogue', pathMatch: 'full'},
   { path: 'categories/:id', component: ProductsByCategoryComponent},
-  { path: 'products', component: HomePageComponent},
 ];
 
 @NgModule({
@@ -25,6 +27,7 @@ const catalogRoutes: Routes = [
   ],
   imports: [
     CommonModule,
+    BrowserModule,
     UiModule,
     RouterModule.forRoot(catalogRoutes),
   ],

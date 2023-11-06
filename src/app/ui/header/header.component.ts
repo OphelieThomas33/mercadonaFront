@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {  } from '@angular/common';import { Component } from '@angular/core';
 
 @Component({
   selector: 'mcd-header',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
+  constructor() { }
+
+  goToAdminPanel(): any {
+    window.location.href = 'http://15.237.203.102/admin';
+  }
 
 }
