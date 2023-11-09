@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
-
+import { FormGroup, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'mcd-login',
@@ -16,24 +15,43 @@ export class LoginComponent implements OnInit {
     password:  new FormControl('')
   })
   wrongCredentials: boolean = false;
+  user: any;
 
   constructor(
-    private auth: AuthService,
-    private router: Router
+    private authService: AuthService,
+    private router: Router,
     ) {}
 
   ngOnInit(): void {
+    this.user = {
+      username: '',
+      password: ''
+    }
   }
 
-  login() {
-    const formData = this.loginForm.value
+  onSubmit(): any {
     this.wrongCredentials = false;
-    this.auth.login(formData.username, formData.password).subscribe(result => {
-      this.router.navigate(['/promotions'])
-    }, error => {
-      this.wrongCredentials = true
-    })
+    this.user = {
+      username: this.loginForm.get('username')?.value,
+      password: this.loginForm.get('password')?.value
+    }
+    this.authService.login(this.user).subscribe(
+      response => {
+        localStorage.setItem('token', response.access);
+        localStorage.setItem('user', response.user);
+        this.router.navigate(['/intranet']);
+        console.log('Connexion réussie');
+        return response.user
+      },
+      error => {
+        console.error('Erreur de connexion', error);
+        this.wrongCredentials = true;
+      }
+    )
   }
 
 
   }
+
+
+

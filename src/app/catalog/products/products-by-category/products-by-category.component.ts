@@ -13,6 +13,7 @@ export class ProductsByCategoryComponent implements OnInit{
   title: string = "NOS PRODUITS";
   subtitle: string;
   productsByCategory: Product[];
+  imgUrl: string = '../../../assets/banniere-header.png'
 
   constructor(
     private route: ActivatedRoute,

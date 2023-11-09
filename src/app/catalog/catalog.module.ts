@@ -9,6 +9,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { UiModule } from '../ui/ui.module';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { AddProductComponent } from './products/add-product/add-product.component';
 
 const catalogRoutes: Routes = [
   { path: 'catalogue', component: HomePageComponent },
@@ -24,6 +25,7 @@ const catalogRoutes: Routes = [
     ProductsByCategoryComponent,
     DiscountPageComponent,
     HomePageComponent,
+    AddProductComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,8 @@ const catalogRoutes: Routes = [
   ],
   exports: [
     CatalogComponent,
+    ProductListComponent,
+    AddProductComponent,
   ]
 })
 export class CatalogModule { }

@@ -3,26 +3,30 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientXsrfModule } from '@angular/common/http';
-import { HttpXsrfInterceptorService } from './interceptors/http-xsrf-interceptor/http-xsrf-interceptor.service';
-
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+import { InterceptorComponent } from './interceptor/interceptor.component';
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    InterceptorComponent,
+
   ],
   imports: [
     CommonModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    // HttpClientXsrfModule.withOptions({
-    //   cookieName: 'csrftoken'
-    // })
+    HttpClientModule,
   ],
-  // providers: [{
-  //   provide: HTTP_INTERCEPTORS, useClass: HttpXsrfInterceptorService, multi: true
-  // }]
+  exports: [
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorComponent, multi: true},
+    AuthService,
+    InterceptorComponent,
+  ]
 })
 export class AuthModule { }

@@ -13,6 +13,7 @@ export class HomePageComponent implements OnInit {
   title: string = "NOS PRODUITS";
   subtitle: string = "";
   products: Product[];
+  imgUrl: string = '../../../assets/banniere-header.png'
 
   constructor(private productService: ProductService,) {}
 

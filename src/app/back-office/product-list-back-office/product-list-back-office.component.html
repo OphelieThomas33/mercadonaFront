@@ -1,0 +1,41 @@
+<section class="product-list-bo container-fluid table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="header-cell text-center align-middle" scope="col">Id</th>
+        <th class="header-cell text-center align-middle" scope="col">Nom</th>
+        <th class="header-cell text-center align-middle" scope="col">Description</th>
+        <th class="header-cell text-center align-middle" scope="col">Image</th>
+        <th class="header-cell text-center align-middle" scope="col">Catégories</th>
+        <th class="header-cell text-center align-middle" scope="col">Prix de base</th>
+        <th class="header-cell text-center align-middle" scope="col">Promotion en cours</th>
+        <th class="header-cell text-center align-middle" scope="col">Pourcentage de remise</th>
+        <th class="header-cell text-center align-middle" scope="col">Prix remisé</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let product of products">
+        <tr>
+          <th class="text-center align-middle" scope="row">{{product.id}}</th>
+          <td class="text-center align-middle">{{product.label}}</td>
+          <td class="text-center align-middle fw-lighter">{{product.description}}</td>
+          <td class="text-center align-middle"><img [src]="envUrl +'/'+ product.image" alt="Image of product" class="mb-3 img-fluid"></td>
+          <td class="text-center align-middle">
+            <div *ngFor="let category of product.category">{{category.label}}</div>
+          </td>
+          <td class="text-center align-middle">{{product.price}}€</td>
+          <td class="text-center align-middle">
+            <div *ngIf="product.has_valid_discount"><i class="icon-check bi bi-check-circle-fill"></i></div>
+            <div *ngIf="!product.has_valid_discount"><a (click)="addDiscount(product)"><i class="icon-add-discount bi bi-plus-circle-fill"></i></a></div></td>
+          <td class="text-center align-middle">
+            <div *ngFor="let discount of product.discount | keyvalue">
+              <div *ngIf="discount.key == 'percentage'">{{ discount.value }} %</div>
+            </div>
+          </td>
+          <td class="text-center align-middle">
+            <div *ngIf="product.has_valid_discount">{{product.discounted_price}}€</div></td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</section>

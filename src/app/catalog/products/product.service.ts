@@ -8,28 +8,19 @@ import { Product } from './product';
   providedIn: 'root'
 })
 export class ProductService {
+
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
-  //   const httpHeaders = {
-  //     headers: new HttpHeaders({
-  //     'Access-Control-Request-Headers':'Accept, Cookie, origin',
-  //     'Access-Control-Allow-Method': 'GET, PUT, POST, DELETE, OPTIONS',
-  //     })
-  // }
     return this.http.get<Product[]>(`${environment.apiUrl}/api/products/`)
+  }
 
+  getProductById(productId: number): Observable<Product|undefined> {
+    return this.http.get<Product>(`${environment.apiUrl}/api/products/${productId}`)
   }
 
   getProductsByCategoryId(): Observable<Product[]> {
-    //   const httpHeaders = {
-    //     headers: new HttpHeaders({
-    //     'Access-Control-Request-Headers':'Accept, Cookie, origin',
-    //     'Access-Control-Allow-Method': 'GET, PUT, POST, DELETE, OPTIONS',
-    //     })
-    // }
-      return this.http.get<Product[]>(`${environment.apiUrl}/api/products/`)
-
-    }
+    return this.http.get<Product[]>(`${environment.apiUrl}/api/products/`)
+  }
 
 }

@@ -7,15 +7,20 @@ import { ConditionsOfUseComponent } from './other-pages/conditions-of-use/condit
 import { LegalNoticesComponent } from './other-pages/legal-notices/legal-notices.component';
 import { ProductsByCategoryComponent } from './catalog/products/products-by-category/products-by-category.component';
 import { LoginComponent } from './auth/login/login.component';
+import { HomeBackOfficeComponent } from './back-office/home-back-office/home-back-office.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: 'catalogue', component: HomePageComponent },
   { path: '', redirectTo: 'catalogue', pathMatch: 'full'},
+  { path : '', component: HomePageComponent},
   { path: 'categories/:id', component: ProductsByCategoryComponent},
   { path: 'promotions', component: DiscountPageComponent},
   { path: 'cgu', component: ConditionsOfUseComponent },
   { path: 'mentions-legales', component: LegalNoticesComponent },
   { path: 'login', component: LoginComponent},
+    // { path: 'intranet', component: HomeBackOfficeComponent},
+  { path: 'intranet', component: HomeBackOfficeComponent, canActivate: [AuthGuard]},
   { path: '**', component: PageNotFoundComponent}
 
 ];
