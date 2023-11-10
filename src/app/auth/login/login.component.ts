@@ -29,12 +29,14 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // submit of login form
   onSubmit(): any {
     this.wrongCredentials = false;
     this.user = {
       username: this.loginForm.get('username')?.value,
       password: this.loginForm.get('password')?.value
     }
+    // save in local storage informations sent back by login()
     this.authService.login(this.user).subscribe(
       response => {
         localStorage.setItem('token', response.access);
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
         console.log('Connexion réussie');
         return response.user
       },
+      // display error message if wronf credentials
       error => {
         console.error('Erreur de connexion', error);
         this.wrongCredentials = true;

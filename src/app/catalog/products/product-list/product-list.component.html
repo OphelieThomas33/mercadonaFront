@@ -1,40 +1,61 @@
- <div class="container">
-  <h3 class="mt-4 fw-bold text-align-center">{{ title}}</h3>
-    <h5 class="mb-4">{{ subtitle }}</h5>
-
-    <div class="row g-4 row-cols-lg-5 row-cols-2 row-cols-md-3">
-      <div class="col" *ngFor="let product of products">
-        <div class="card card-product">
-          <div class="card-body">
-            <div class="text-center position-relative ">
-              <div *ngIf="product.has_valid_discount" class=" position-absolute top-0 start-0">
-                  <div *ngFor="let discount of product.discount | keyvalue">
-                    <div *ngIf="discount.key == 'percentage'">
-                      <span class="badge bg-danger">  {{ discount.value }} %</span>
-                    </div>
-                  </div>
-              </div>
-            <img [src]="envUrl +'/'+ product.image" alt="Image of product" class="mb-3 img-fluid">
-          </div>
-          <h2 class="fs-6">{{ product.label }}</h2>
-          <div class="d-flex mt-3 justify-content-between">
-              <div class="d-flex align-self-start flex-column justify-content-end">
-                <div class="m-0 p-0" *ngFor="let category of product.category">
-                  <span  class="categories fw-lighter p-0 m-0"> {{ category.label }} </span>
-                </div>
-              </div>
-              <div class="d-flex align-self-end align-content-end">
-                <div *ngIf="product.has_valid_discount">
-                  <span class="text-danger fw-bold"> {{ product.discounted_price }}€  </span>
-                  <span class="text-decoration-line-through text-muted text-small"> {{ product.price }}€</span>
-                </div>
-                <div *ngIf="!product.has_valid_discount">
-                  <span class="">{{ product.price }}€</span>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
+  <!-- product list section -->
+  <section class="product-list">
+    <div class="container">
+    <!-- title by section discounted products or all products -->
+     <h3 class="mt-4 fw-bold text-align-center">{{ title}}</h3>
+     <!-- label of category if display product by category -->
+       <h5 class="mb-4">{{ subtitle }}</h5>
+       <!-- products if product list is no empty -->
+       <div *ngIf="products.length > 0">
+         <div class="row g-4 row-cols-lg-5 row-cols-2 row-cols-md-3">
+          <!-- card for each product of product list -->
+           <div class="col" *ngFor="let product of products">
+             <div class="card card-product">
+               <div class="card-body">
+                 <div class="text-center position-relative ">
+                  <!-- discounted percentage if product has_valid_discount = true-->
+                   <div *ngIf="product.has_valid_discount" class=" position-absolute top-0 start-0">
+                       <div *ngFor="let discount of product.discount | keyvalue">
+                         <div *ngIf="discount.key == 'percentage'">
+                           <span class="badge bg-danger">  {{ discount.value }} %</span>
+                         </div>
+                       </div>
+                   </div>
+                 <img [src]="envUrl +'/'+ product.image" alt="Image of product" class="mb-3 img-fluid">
+               </div>
+               <h2 class="fs-6">{{ product.label }}</h2>
+               <div class="d-flex mt-3 justify-content-between">
+                   <div class="d-flex align-self-start flex-column justify-content-end">
+                     <div class="m-0 p-0" *ngFor="let category of product.category">
+                       <span  class="categories fw-lighter p-0 m-0"> {{ category.label }} </span>
+                     </div>
+                   </div>
+                   <!-- discounted price if product has_valid_discount = true-->
+                   <div class="d-flex align-self-end align-content-end">
+                     <div *ngIf="product.has_valid_discount">
+                      <!-- discounted price : bold and red -->
+                       <span class="text-danger fw-bold"> {{ product.discounted_price }}€  </span>
+                       <!-- base price crossed out -->
+                       <span class="text-decoration-line-through text-muted text-small"> {{ product.price }}€</span>
+                     </div>
+                     <!-- price if product has_valid_discount = false -->
+                     <div *ngIf="!product.has_valid_discount">
+                       <span class="">{{ product.price }}€</span>
+                     </div>
+                   </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <!-- message if product list is empty -->
+     <div *ngIf="products.length === 0" class="no-product">
+       <div class="text-center mb-3">
+         <i class="bi bi-search fs-4"></i>
+         <p class="fs-5 ">Aucun produit trouvé</p>
+       </div>
+     </div>
     </div>
-</div>
 
+ </section>

@@ -21,6 +21,7 @@ export class ProductListBackOfficeComponent {
 
   }
 
+
   addDiscount(product: Product) {
     // if(product.id) {
     //   this.productService.getProductById(+product.id)

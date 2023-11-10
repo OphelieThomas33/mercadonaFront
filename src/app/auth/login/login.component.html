@@ -1,13 +1,17 @@
+<!-- login page -->
 <div class="login container">
   <h3>Login</h3>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <!-- login form -->
+   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
+      <!-- username field -->
       <div class="mb-3">
         <label for="username" class="form-label">Identifiant</label>
         <input type="text" class="form-control" id="username"
               required
               formControlName="username"
               >
+      <!-- password field -->
       </div>
         <div class="mb-3">
         <label for="password" class="form-label">Mot de passe</label>
@@ -16,6 +20,7 @@
             formControlName="password"
             >
       </div>
+      <!-- error message if credentials are incorrect  -->
       <div *ngIf="wrongCredentials"><span class="text-danger">L'identifiant et/ou le mot de passe sont erronés</span></div>
       <button type="submit" class="btn btn-success mt-3" id="btn-login">Se connecter</button>
     </div>

@@ -1,4 +1,6 @@
+<!-- section : product list to manage -->
 <section class="product-list-bo container-fluid table-responsive">
+  <!-- header table -->
   <table class="table">
     <thead>
       <tr>
@@ -13,7 +15,9 @@
         <th class="header-cell text-center align-middle" scope="col">Prix remisé</th>
       </tr>
     </thead>
+    <!-- body table -->
     <tbody>
+      <!-- product row for each product of product list -->
       <ng-container *ngFor="let product of products">
         <tr>
           <th class="text-center align-middle" scope="row">{{product.id}}</th>

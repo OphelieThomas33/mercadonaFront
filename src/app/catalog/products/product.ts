@@ -1,3 +1,4 @@
+// class product retourned by API
 export class Product {
   id: number;
   label: string;

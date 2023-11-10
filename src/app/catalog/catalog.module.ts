@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CatalogComponent } from './catalog.component';
 import { ProductsByCategoryComponent } from './products/products-by-category/products-by-category.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { CategoryListComponent } from './categories/category-list/category-list.component';
@@ -19,7 +18,6 @@ const catalogRoutes: Routes = [
 
 @NgModule({
   declarations: [
-    CatalogComponent,
     CategoryListComponent,
     ProductListComponent,
     ProductsByCategoryComponent,
@@ -34,7 +32,6 @@ const catalogRoutes: Routes = [
     RouterModule.forRoot(catalogRoutes),
   ],
   exports: [
-    CatalogComponent,
     ProductListComponent,
     AddProductComponent,
   ]

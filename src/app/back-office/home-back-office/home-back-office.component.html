@@ -1,4 +1,11 @@
-<mcd-banner [imgUrl]="imgUrl"></mcd-banner>
-<mcd-user-profile></mcd-user-profile>
-<mcd-product-list-back-office [title]="title" [subtitle]="subtitle" [products]="products"></mcd-product-list-back-office>
-<mcd-add-product id="addProduct" ></mcd-add-product>
+<!-- back office home page -->
+<section class="back-office-home-page">
+  <!-- banner with employee image -->
+  <mcd-banner [imgUrl]="imgUrl"></mcd-banner>
+  <!-- profile authenticated user -->
+  <mcd-user-profile></mcd-user-profile>
+  <!-- product list -->
+  <mcd-product-list-back-office [title]="title" [subtitle]="subtitle" [products]="products"></mcd-product-list-back-office>
+  <!-- add form product -->
+  <mcd-add-product id="addProduct" ></mcd-add-product>
+</section>

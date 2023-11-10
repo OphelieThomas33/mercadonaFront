@@ -20,11 +20,13 @@ export class HomeBackOfficeComponent {
     private userService: UserService,
     ) {}
 
+  // get user profile for welcome message
   ngOnInit():void {
     this.productList()
     this.userService.getProfile()
   }
 
+  // returns the product list to manage
   productList(): void {
   this.productService.getProducts()
     .subscribe(products => {

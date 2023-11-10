@@ -1,8 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Category } from '../category';
 
 import { CategoriesService } from '../categories.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'mcd-category-list',
@@ -18,6 +17,7 @@ export class CategoryListComponent implements OnInit {
     private categoryService: CategoriesService,
   ) {}
 
+  // get all categories
   ngOnInit():void {
     this.categoryService.getCategories()
       .subscribe(categoriesList => {

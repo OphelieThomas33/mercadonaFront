@@ -1,3 +1,4 @@
+// user returned by the page /dj-rest-auth/login/
 export class AccessUser {
   access: string;
   refresh: string;
@@ -10,6 +11,7 @@ export class AccessUser {
   };
 }
 
+// user returned by the page /dj-rest-auth/user/
 export class User {
   pk: number;
   username: string;

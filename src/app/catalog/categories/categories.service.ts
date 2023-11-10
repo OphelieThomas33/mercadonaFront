@@ -11,10 +11,12 @@ export class CategoriesService {
 
   constructor(private http: HttpClient) {}
 
+  // request to the api to obtain all the categories of the database
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(`${environment.apiUrl}/api/categories/`)
   }
 
+  // request to the api to obtain one category by id
   getCategoryById(categoryId: number): Observable<Category> {
     return this.http.get<Category>(`${environment.apiUrl}/api/categories/${categoryId}/`)
   }

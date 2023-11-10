@@ -1,3 +1,4 @@
+// class category returned by api
 export class Category {
   id: number;
   label: string;

@@ -19,6 +19,7 @@ export class UserProfileComponent implements OnInit {
     private router: Router,
   ) {}
 
+  // returns employee informations
   ngOnInit(): void {
     this.userService.getProfile().subscribe(
       profile =>
@@ -26,15 +27,20 @@ export class UserProfileComponent implements OnInit {
     )
   }
 
+  // deconnection of back office
   logout() {
     this.authService.logout().subscribe(
       response => {
+        // clears locally stored informations
         localStorage.clear();
+        // returns to home page
         this.router.navigate(['/']);
         console.log('Déconnexion réussie');
+        // clear authenticated profile
         this.userService.profile = '';
         console.log('profil :', this.profile)
       },
+      // erreor message
       error => {
         console.error('Déconnexion échouée', error);
       }

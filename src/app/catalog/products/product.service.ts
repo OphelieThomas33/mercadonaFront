@@ -11,16 +11,14 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
+  // request to the api to get all the products of the database
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${environment.apiUrl}/api/products/`)
   }
 
+  // request to the api to get one product by id
   getProductById(productId: number): Observable<Product|undefined> {
     return this.http.get<Product>(`${environment.apiUrl}/api/products/${productId}`)
-  }
-
-  getProductsByCategoryId(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${environment.apiUrl}/api/products/`)
   }
 
 }

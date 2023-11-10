@@ -1,9 +1,12 @@
+<!-- categories section -->
 <section class="categories">
 
   <h3 class="ms-2 mt-2 fw-bold">NOS RAYONS</h3>
+  <!-- categories list for each parent category -->
   <div class="d-flex flex-wrap justify-content-between mt-3 mb-2 mx-2">
       <ng-container *ngFor="let category of categoriesList">
         <div *ngIf="!category.parent" class="align-content-center mb-2">
+            <!-- returns to the api : category by Id -->
             <a [routerLink]="['/categories', category.id]" class="btn btn-success category">
               {{category.label}}
             </a>
@@ -11,7 +14,7 @@
       </ng-container>
 
   </div>
-
+  <!-- return to the home page with all the products -->
   <div class="d-flex flex-column">
       <a [routerLink]="['/catalogue']" class="btn btn-success all-categories fw-bold">
       Tous nos produits

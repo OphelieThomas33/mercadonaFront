@@ -18,20 +18,15 @@ export class DiscountPageComponent  {
 
   constructor(private productService: ProductService,) {}
 
+  // display discounted products during init
   ngOnInit():void {
-    this.productList()
     this.getDiscountedProducts()
   }
 
-  productList(): void {
-    this.productService.getProducts()
-      .subscribe(products => {
-        this.products = products;
-      });
-  }
-
+  // get discounted products
   getDiscountedProducts(): void {
     this.productService.getProducts().pipe(
+      // returns all products with has_valid_discount = true
       map(products => products.filter(product => product.has_valid_discount)),
       ).subscribe(products => {
         this.discountedProducts = products;

@@ -21,6 +21,7 @@ export class AuthService {
     private http: HttpClient,
     private userService: UserService,
     ) {
+      // headears for requests
       this.httpOptions = {
         headers: new HttpHeaders(
           {'Content-Type': 'application/json',
@@ -28,10 +29,12 @@ export class AuthService {
       };
   }
 
+  // login request
   login(user: any): Observable<any> {
     return this.http.post(this.loginUrl, JSON.stringify(user), this.httpOptions)
   }
 
+  // logout request
   logout() {
     return this.http.post(this.logoutUrl, this.httpOptions)
   }

@@ -20,13 +20,18 @@ export class ProductsByCategoryComponent implements OnInit{
     private categoriesService: CategoriesService,
     ) {}
 
+  //
   ngOnInit() {
+    // listen the api path with id param
     this.route.params.subscribe(
       params => {
         const id = +params['id'];
         this.categoriesService.getCategoryById(+id)
-        .subscribe(category => {
+        .subscribe(
+          category => {
+          // returns products are in selected category
           this.productsByCategory = category.products;
+          // returns label category
           this.subtitle = category.label;
         });
       }
