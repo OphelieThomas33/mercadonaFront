@@ -40,7 +40,7 @@ export class UserProfileComponent implements OnInit {
         this.userService.profile = '';
         console.log('profil :', this.profile)
       },
-      // erreor message
+      // error message
       error => {
         console.error('Déconnexion échouée', error);
       }

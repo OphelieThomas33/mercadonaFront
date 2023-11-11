@@ -2,5 +2,5 @@
 
 export const environment = {
   production: true,
-  apiUrl: 'http://15.237.203.102'
+  apiUrl: 'https://mercadona-api.ophelie-thomas-dev.com'
 };
