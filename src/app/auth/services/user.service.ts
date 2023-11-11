@@ -21,7 +21,6 @@ export class UserService {
       // headers for requests
       headers: new HttpHeaders(
         {'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:4200',
         }),
       };
     };
@@ -36,7 +35,7 @@ export class UserService {
         console.log(this.profile)
       // request to obtain user information
       } else {
-        this.http.get(`${environment.apiUrl}/dj-rest-auth/user/`, this.httpOptions).subscribe(profile => {
+        this.http.get(`${environment.apiUrl}/api/auth/user/`, this.httpOptions).subscribe(profile => {
           this.profile = profile;
           observer.next(profile);
           observer.complete();

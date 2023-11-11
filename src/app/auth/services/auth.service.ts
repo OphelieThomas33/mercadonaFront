@@ -9,8 +9,8 @@ import { UserService } from 'src/app/auth/services/user.service';
 })
 export class AuthService {
 
-  loginUrl = `${environment.apiUrl}/dj-rest-auth/login/`;
-  logoutUrl = `${environment.apiUrl}/dj-rest-auth/logout/`;
+  loginUrl = `${environment.apiUrl}/api/auth/login/`;
+  logoutUrl = `${environment.apiUrl}/api/auth/logout/`;
 
   httpOptions: any;
   user: any;

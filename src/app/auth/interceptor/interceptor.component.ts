@@ -10,7 +10,7 @@ export class InterceptorComponent implements HttpInterceptor {
   // include the token saved in local storage for secure pages
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const token = localStorage.getItem('token');
-    if(req.url.includes('/dj-rest-auth/user/',)) {
+    if(req.url.includes('/api/auth/user/',)) {
       const otherReq = req.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`
