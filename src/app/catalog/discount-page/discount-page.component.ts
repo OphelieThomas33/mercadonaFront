@@ -14,7 +14,7 @@ export class DiscountPageComponent  {
   subtitle: string = "";
   products: Product[];
   discountedProducts: Product[];
-  imgUrl: string = '../../../assets/banniere-header.png'
+  imgUrl: string = '../../../assets/cadre-legumes-plat.png'
 
   constructor(private productService: ProductService,) {}
 
