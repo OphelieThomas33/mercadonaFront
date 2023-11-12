@@ -34,12 +34,12 @@ To run this project, you will need to add the following environment variables to
 
 ### environment.ts
 
-Code to copy into your file and add your `apiUrl`
+Code to copy into your file
 
 ```typescript
 export const environment = {
   production: false,
-  apiUrl: 'www.localhost:4200'
+  apiUrl: 'http://localhost:4200'
 };
 ```
 
