@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl} from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'mcd-login',
@@ -15,10 +16,12 @@ export class LoginComponent implements OnInit {
     password:  new FormControl('')
   })
   wrongCredentials: boolean = false;
+  logoutMessage: boolean = false;
   user: any;
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
     private router: Router,
     ) {}
 
@@ -27,6 +30,8 @@ export class LoginComponent implements OnInit {
       username: '',
       password: ''
     }
+    this.logoutMessage = this.userService.logoutMessage
+
   }
 
   // submit of login form
@@ -53,8 +58,11 @@ export class LoginComponent implements OnInit {
     )
   }
 
-
+  ngOnDestroy() {
+    this.userService.logoutMessage = false;
   }
+
+}
 
 
 

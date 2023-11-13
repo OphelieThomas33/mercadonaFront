@@ -6,7 +6,7 @@
      <!-- label of category if display product by category -->
        <h5 class="mb-4">{{ subtitle }}</h5>
        <!-- products if product list is no empty -->
-       <div *ngIf="products.length > 0">
+       <div *ngIf="(products)?.length != 0; else noProduct">
          <div class="row g-4 row-cols-lg-5 row-cols-2 row-cols-md-3">
           <!-- card for each product of product list -->
            <div class="col" *ngFor="let product of products">
@@ -50,12 +50,12 @@
        </div>
      </div>
      <!-- message if product list is empty -->
-     <div *ngIf="products.length === 0" class="no-product">
+     <ng-template #noProduct class="no-product">
        <div class="text-center mb-3">
          <i class="bi bi-search fs-4"></i>
          <p class="fs-5 ">Aucun produit trouvé</p>
        </div>
-     </div>
+     </ng-template>
     </div>
 
  </section>

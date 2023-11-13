@@ -1,5 +1,6 @@
 <!-- section : product list to manage -->
 <section class="product-list-bo container-fluid table-responsive">
+  <h3 class="title m-3 text-center">Liste des produits en ligne</h3>
   <!-- header table -->
   <table class="table">
     <thead>
@@ -32,7 +33,7 @@
             <div *ngIf="product.has_valid_discount"><i class="icon-check bi bi-check-circle-fill"></i></div>
             <div *ngIf="!product.has_valid_discount"><a (click)="addDiscount(product)"><i class="icon-add-discount bi bi-plus-circle-fill"></i></a></div></td>
           <td class="text-center align-middle">
-            <div *ngFor="let discount of product.discount | keyvalue">
+              <div *ngFor="let discount of product.discount | keyvalue">
               <div *ngIf="discount.key == 'percentage'">{{ discount.value }} %</div>
             </div>
           </td>

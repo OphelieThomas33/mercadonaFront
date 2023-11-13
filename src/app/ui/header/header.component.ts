@@ -1,16 +1,41 @@
-import {  } from '@angular/common';import { Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/auth/services/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'mcd-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
 
-  constructor() { }
+  profile: any;
+  textButton: string;
+  urlButton: string;
+  displayLogin: string = 'block';
+  displayLogout: string = 'none';
+  isLoggedIn: boolean = false;
 
-  goToAdminPanel(): any {
-    window.location.href = 'http://15.237.203.102/admin';
+  constructor(
+    private userService: UserService,
+    private router: Router,
+  ) { }
+
+  // goToAdminPanel(): any {
+  //   window.location.href = `${environment.apiUrl}/admin`;
+  // }
+
+  ngDoCheck() {
+    this.isLoggedIn = this.userService.isLoggedIn
+  }
+
+  logout() {
+    this.userService.logout()
+  }
+
+  login() {
+    this.router.navigate(['/login'])
   }
 
 }

@@ -1,1 +1,85 @@
-<p>add-product works!</p>
+<!-- product form -->
+<div class="product-form container">
+  <h3 class="title text-center my-5">Formulaire produit</h3>
+  <!-- login form -->
+   <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="form-group d-grid ">
+      <!-- label field -->
+        <div class="mb-3 row align-items-center">
+          <label for="label" class="form-label  fw-bold  col-2 me-3 vw-20">Libellé</label>
+          <input type="text" class="form-control col" id="label"
+                maxlength="50"
+                required
+                placeholder="Renseigner le libellé du produit"
+                formControlName="label"
+                >
+
+      </div>
+      <!-- description field -->
+      <div class="mb-3 row align-items-center">
+        <label for="description" class="form-label fw-bold  col-2 me-3">Description</label>
+        <input type="text" class="form-control col" id="description"
+              placeholder="Renseigner une description (facultatif)"
+              formControlName="description"
+            >
+      </div>
+      <!-- image field -->
+      <div class="mb-3 row align-items-center">
+        <label for="image" class="form-label  fw-bold col-2 me-3">Image</label>
+        <input type="file" class="form-control col" id="image"
+              src="`${environment.apiUrl}/assets/images/`"
+              accept="image/png, image/jpeg"
+              required
+              formControlName="image"
+            >
+      </div>
+      <!-- price field -->
+      <div class="mb-3 row align-items-center">
+        <label for="price" class="form-label fw-bold  col-2 me-3">Prix</label>
+        <input type="number" class="form-control col" id="price"
+              required
+              placeholder="Renseigner le prix de base en euros"
+              formControlName="price"
+            >
+      </div>
+      <!-- category field -->
+      <div class="mb-3 d-grid align-items-center">
+        <div class="row d-flex flex-column mb-3">
+          <label for="category" class="form-label  fw-bold me-3">Catégories</label>
+          <span class="fw-light">Sélectionner une catégorie et une sous-catégorie</span>
+        </div>
+        <div class=" row" >
+          <ng-container *ngFor="let category of categories">
+            <ng-container *ngIf="category?.parent == null">
+              <div class="d-flex align-items-start col mb-3">
+                <input type="checkbox" id="category"
+                class="mt-1 filled-in"
+                formControlName="category"
+                >
+                <label class="ms-3 fw-bold"> {{category.label}}
+                  <div class="d-flex flex-column">
+                    <ng-container *ngFor="let subcategory of category.subcategories" >
+                      <div class="d-flex flex-row ">
+                        <input type="checkbox" class="form-control" id="subcategory"
+                              class="filled-in"
+                              formControlName="subcategory"
+                              >
+                        <label class="ms-3 fw-normal">{{subcategory['label']}}</label>
+                      </div>
+                    </ng-container>
+                  </div>
+                </label>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- error message if credentials are incorrect  -->
+      <div *ngIf=""><span class="text-danger"></span></div>
+      <!-- submit button -->
+      <button type="submit" class="btn btn-success mt-3" id="btn-login">Ajouter au catalogue</button>
+    </div>
+  </form>
+</div>
+

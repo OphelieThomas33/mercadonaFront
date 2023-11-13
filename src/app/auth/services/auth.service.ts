@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserService } from 'src/app/auth/services/user.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,6 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private userService: UserService,
     ) {
       // headears for requests
       this.httpOptions = {

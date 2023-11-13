@@ -5,7 +5,7 @@
   <!-- categories list for each parent category -->
   <div class="d-flex flex-wrap justify-content-between mt-3 mb-2 mx-2">
       <ng-container *ngFor="let category of categoriesList">
-        <div *ngIf="category.parent === null" class="align-content-center mb-2">
+        <div *ngIf="category?.parent == null" class="align-content-center mb-2">
             <!-- returns to the api : category by Id -->
             <a [routerLink]="['/categories', category.id]" class="btn btn-success category">
               {{category.label}}

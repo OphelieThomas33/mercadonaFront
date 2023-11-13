@@ -9,10 +9,11 @@ import { UiModule } from '../ui/ui.module';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AddProductComponent } from './products/add-product/add-product.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const catalogRoutes: Routes = [
-  { path: 'catalogue', component: HomePageComponent },
-  { path: '', redirectTo: 'catalogue', pathMatch: 'full'},
+  { path: '', component: HomePageComponent },
+  { path: 'catalogue', redirectTo: '', pathMatch: 'full'},
   { path: 'categories/:id', component: ProductsByCategoryComponent},
 ];
 
@@ -28,6 +29,8 @@ const catalogRoutes: Routes = [
   imports: [
     CommonModule,
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     UiModule,
     RouterModule.forRoot(catalogRoutes),
   ],

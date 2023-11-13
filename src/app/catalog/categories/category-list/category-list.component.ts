@@ -22,9 +22,10 @@ export class CategoryListComponent implements OnInit {
     this.categoryService.getCategories()
       .subscribe(categoriesList => {
         this.categoriesList = categoriesList;
-      });
+      })
     }
 
- }
 
 
+
+}

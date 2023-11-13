@@ -17,9 +17,14 @@
           <a routerLink="/promotions"  routerLinkActive="active" class="nav-link" href="#">Promotions</a>
         </li>
       </ul>
-      <button type="button" class="btn btn-success">
-        <a routerLink="/login" id="login">Connexion</a>
-      </button>
+      <div>
+        <button *ngIf="!isLoggedIn" type="button" class="btn btn-success">
+          <a (click)="login()" id="login">Connexion</a>
+        </button>
+        <button *ngIf="isLoggedIn" type="button" class="btn btn-success">
+          <a (click)="logout()" id="logout">Déconnexion</a>
+        </button>
+      </div>
     </div>
   </nav>
 </header>

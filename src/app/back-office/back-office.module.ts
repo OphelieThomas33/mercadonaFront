@@ -8,7 +8,7 @@ import { ProductListBackOfficeComponent } from './product-list-back-office/produ
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorComponent } from '../auth/interceptor/interceptor.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -21,11 +21,14 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     UiModule,
     CatalogModule,
     AuthModule,
+    RouterModule,
   ],
   exports: [
     HomeBackOfficeComponent,
+    RouterModule,
   ],
   providers: [
+
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorComponent, multi: true}
   ],
 })

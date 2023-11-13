@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 
 @Injectable({
@@ -12,10 +13,13 @@ export class UserService {
 
   profile: any;
   httpOptions: any;
+  isLoggedIn: boolean = false;
+  logoutMessage: boolean = false;
 
   constructor(
     private http: HttpClient,
     private router: Router,
+    private authService: AuthService,
   ) {
     this.httpOptions = {
       // headers for requests
@@ -37,10 +41,13 @@ export class UserService {
       } else {
         this.http.get(`${environment.apiUrl}/api/auth/user/`, this.httpOptions).subscribe(profile => {
           this.profile = profile;
+          this.isLoggedIn = true;
+          this.logoutMessage = false;
           observer.next(profile);
           observer.complete();
         // error message
         }, error => {
+          this.isLoggedIn = false;
           observer.error(error);
           observer.complete();
         })
@@ -48,7 +55,28 @@ export class UserService {
     })
   }
 
+  // deconnection of back office
+  logout() {
+    this.authService.logout().subscribe(
+      response => {
+        // clears locally stored informations
+        localStorage.clear();
+        // returns to home page
+        this.router.navigate(['/login']);
+        console.log('Déconnexion réussie');
+        // clear authenticated profile
+        this.profile = '';
+        this.isLoggedIn = false;
+        this.logoutMessage = true;
+        console.log('profil :', this.profile)
+      },
+      // error message
+      error => {
+        console.error('Déconnexion échouée', error);
+      }
 
+    )
+  }
 
 }
 
