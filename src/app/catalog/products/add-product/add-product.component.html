@@ -1,7 +1,7 @@
-<!-- product form -->
+<!-- add product page -->
 <div class="product-form container">
   <h3 class="title text-center my-5">Formulaire produit</h3>
-  <!-- login form -->
+  <!-- product form -->
    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
     <div class="form-group d-grid ">
       <!-- label field -->
@@ -19,7 +19,8 @@
       <div class="mb-3 row align-items-center">
         <label for="description" class="form-label fw-bold  col-2 me-3">Description</label>
         <input type="text" class="form-control col" id="description"
-              placeholder="Renseigner une description (facultatif)"
+              placeholder="Renseigner une description"
+              required
               formControlName="description"
             >
       </div>
@@ -27,7 +28,7 @@
       <div class="mb-3 row align-items-center">
         <label for="image" class="form-label  fw-bold col-2 me-3">Image</label>
         <input type="file" class="form-control col" id="image"
-              src="`${environment.apiUrl}/assets/images/`"
+              value="${environment.apiUrl}/assets/images/"
               accept="image/png, image/jpeg"
               required
               formControlName="image"
@@ -55,6 +56,9 @@
                 <input type="checkbox" id="category"
                 class="mt-1 filled-in"
                 formControlName="category"
+                name="{{category.id}}"
+                value="{{category.id}}"
+                (change)="getCategoriesId($event, category.id)"
                 >
                 <label class="ms-3 fw-bold"> {{category.label}}
                   <div class="d-flex flex-column">
@@ -63,6 +67,10 @@
                         <input type="checkbox" class="form-control" id="subcategory"
                               class="filled-in"
                               formControlName="subcategory"
+                              name="{{subcategory['id']}}"
+                              value="{{subcategory['id']}}"
+                              (change)="getCategoriesId($event, subcategory['id'])"
+
                               >
                         <label class="ms-3 fw-normal">{{subcategory['label']}}</label>
                       </div>

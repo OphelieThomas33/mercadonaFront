@@ -11,6 +11,7 @@ import { HomeBackOfficeComponent } from './back-office/home-back-office/home-bac
 import { AuthGuard } from './auth/auth.guard';
 import { ProductListBackOfficeComponent } from './back-office/product-list-back-office/product-list-back-office.component';
 import { AddProductComponent } from './catalog/products/add-product/add-product.component';
+import { AddDiscountComponent } from './catalog/products/add-discount/add-discount.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -25,6 +26,12 @@ const routes: Routes = [
     {
       path: 'nouveau-produit',
       component: AddProductComponent,
+      canActivate: [AuthGuard],
+      pathMatch: 'full'
+    },
+    {
+      path: 'produit/:id',
+      component: AddDiscountComponent,
       canActivate: [AuthGuard],
       pathMatch: 'full'
     },

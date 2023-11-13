@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Product } from 'src/app/catalog/products/product';
-import { ProductService } from 'src/app/catalog/products/product.service';
 import { UserService } from '../../auth/services/user.service';
 
 @Component({

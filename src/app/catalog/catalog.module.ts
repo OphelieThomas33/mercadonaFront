@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddDiscountComponent } from './products/add-discount/add-discount.component';
 
 const catalogRoutes: Routes = [
   { path: '', component: HomePageComponent },
@@ -25,6 +26,7 @@ const catalogRoutes: Routes = [
     DiscountPageComponent,
     HomePageComponent,
     AddProductComponent,
+    AddDiscountComponent,
   ],
   imports: [
     CommonModule,

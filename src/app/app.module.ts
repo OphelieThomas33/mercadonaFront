@@ -25,9 +25,9 @@ import { BackOfficeModule } from './back-office/back-office.module';
     HttpClientModule,
     AppRoutingModule,
     UiModule,
+    BackOfficeModule,
     CatalogModule,
     AuthModule,
-    BackOfficeModule,
 
     ],
   exports: [

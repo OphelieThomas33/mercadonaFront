@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/catalog/products/product';
 import { ProductService } from 'src/app/catalog/products/product.service';
 import { environment } from 'src/environments/environment';
@@ -8,7 +9,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './product-list-back-office.component.html',
   styleUrls: ['./product-list-back-office.component.css']
 })
-export class ProductListBackOfficeComponent implements OnInit{
+export class ProductListBackOfficeComponent implements AfterContentInit {
 
   envUrl : any = environment.apiUrl;
   title: string = "LISTE DE PRODUITS";
@@ -17,26 +18,39 @@ export class ProductListBackOfficeComponent implements OnInit{
   product: Product;
   productId: number;
 
-  constructor(private productService: ProductService) {
+  constructor(
+    private productService: ProductService,
+    private router: Router
+    ) {}
 
-  }
-
-  ngOnInit(): void {
-  // returns the product list to manage
+  getProducts() {
+    // returns the product list to manage
     this.productService.getProducts()
     .subscribe(products => {
       this.products = products;
     });
   }
 
+  // ngOnInit(): void {
+  //   this.getProducts();
+  // }
 
-  addDiscount(product: Product) {
-    // if(product.id) {
-    //   this.productService.getProductById(+product.id)
-    //   .subscribe(product => this.product = product)
-    // } else {
-    //   this.product = undefined;
-    // }
-    }
+  ngAfterContentInit() {
+    this.getProducts();
+  }
+
+
+  addDiscount(e: any, id: number) {
+    this.router.navigate(['/intranet/produit/', id])
+    this.products = [];
+  }
+
+  modifyProduct(product: Product) {
+
+  }
+
+  ngOnDestroy() {
+    this.products = [];
+  }
 
 }

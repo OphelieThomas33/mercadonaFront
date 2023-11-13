@@ -28,4 +28,11 @@ export class HomePageComponent implements OnInit {
       });
   }
 
+  ngAfterContentInit() {
+    this.productList()
+  }
+
+  ngOnDestroy() {
+    this.products = [];
+  }
 }

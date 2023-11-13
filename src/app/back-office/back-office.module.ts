@@ -22,6 +22,7 @@ import { RouterModule } from '@angular/router';
     CatalogModule,
     AuthModule,
     RouterModule,
+
   ],
   exports: [
     HomeBackOfficeComponent,

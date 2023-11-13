@@ -9,7 +9,6 @@ export class Product {
     id: number,
     label: string,
     parent:number|null,
-    icon: string,
     subcategories: [],
     products: []
   }];

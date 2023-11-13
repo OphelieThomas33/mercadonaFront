@@ -1,0 +1,69 @@
+<!-- add discount page -->
+<section class="d-grid">
+  <h3 class="text-center m-3 ">{{product['label']}}</h3>
+  <div class="row ">
+    <div class="product col">
+      <h4 class="text-center m-2">Informations</h4>
+      <p>{{product.description}}</p>
+      <img [src]="envUrl +'/'+ product.image" alt="Image of product" class="mb-3 img-fluid">
+      <p>Prix de base : {{product.price}} €</p>
+      <div *ngFor="let category of product.category">
+        <p>{{category.label}}</p>
+      </div>
+    </div>
+
+    <div class="discount-form col d-flex align-items-center">
+      <form *ngIf="!messageAddDiscount" [formGroup]="discountForm" (ngSubmit)="createDiscount()">
+        <div class="form-group d-grid ">
+          <!-- start date field -->
+            <div class="mb-3 row align-items-center">
+              <label for="startDate" class="form-label  fw-bold  col me-3 vw-20">Début de la promotion</label>
+              <input type="date" class="form-control col" id="startDate"
+                    maxlength="50"
+                    required
+                    placeholder=""
+                    formControlName="startDate"
+                    >
+
+          </div>
+          <!-- end date field -->
+          <div class="mb-3 row align-items-center">
+            <label for="endDate" class="form-label fw-bold  col me-3">Fin de la promotion</label>
+            <input type="date" class="form-control col" id="endDate"
+                  placeholder=""
+                  required
+                  formControlName="endDate"
+                >
+          </div>
+            <!-- percentage field -->
+            <div class="mb-3 row align-items-center">
+              <label for="percentage" class="form-label fw-bold  col me-3">Remise en %</label>
+              <input type="number" class="form-control col" id="percentage"
+                    placeholder="Entrer un nombre enter (ex: 50)"
+                    required
+                    formControlName="percentage"
+                  >
+            </div>
+        </div>
+        <button  type="submit" class="btn btn-success mt-3" id="btn-login">Ajouter la promotion</button>
+      </form>
+      <div *ngIf="messageAddDiscount">
+        <div>
+          <h6>Vous avez saisi les informations suivantes :</h6>
+          <div>
+            <div><span>Date de début : {{discount.start_date | date: 'dd/MM/yy'}}</span></div>
+            <div><span>Date de fin : {{discount.end_date | date: 'dd/MM/yy'}}</span></div>
+            <div><span>Remise : {{discount.percentage}}%</span></div>
+          </div>
+        </div>
+        <div>
+          <span>Cliquer sur le bouton ci-dessous pour appliquer la promotion au produit sélectionné.</span>
+        </div>
+        <button (click)="validDiscount()" class="btn btn-success m-3">Appliquer la promotion</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
