@@ -22,7 +22,7 @@ export class AddDiscountComponent implements OnInit {
     percentage:  new FormControl(''),
   })
 
-  product: Product;
+  product: any;
   discount: any;
   modifiedProduct: any;
   messageAddDiscount: boolean = false;
@@ -86,7 +86,7 @@ export class AddDiscountComponent implements OnInit {
         label: this.product.label,
         description: this.product.description,
         price: this.product.price,
-        category: [12, 5],
+        category: [this.product.category[0]['id'], this.product.category[1]['id'] ],
         discount: this.discount.id
       }
       console.log(this.modifiedProduct)

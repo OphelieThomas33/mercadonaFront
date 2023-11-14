@@ -1,43 +1,56 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from '../../categories/categories.service';
-import { Category } from '../../categories/category';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { Product } from '../product';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mcd-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css'],
+
 })
 export class AddProductComponent implements OnInit{
 
-  productForm: FormGroup = new FormGroup({
-    label: new FormControl(''),
-    description:  new FormControl(''),
-    image:  new FormControl(''),
-    price:  new FormControl(''),
-    category:  new FormControl(''),
-    subcategory:  new FormControl(''),
-    categories: new FormArray([])
-  })
-
-  category: Category;
-  categories: Category[];
+  categories: any;
+  productForm: FormGroup;
+  categoriesForm: FormGroup;
   productCategories: any;
-  product: any;
+  image: any;
+  newProduct: any;
+  file: any;
+  imageData: any;
+  formData: FormData;
 
   constructor(
     private categoryService: CategoriesService,
     private productService: ProductService,
-  ) {}
+    private router: Router,
+  ) {
+    this.productForm = new FormGroup({
+      label: new FormControl(null, Validators.required),
+      description:  new FormControl(null, Validators.required),
+      image:  new FormControl(null, Validators.required),
+      price:  new FormControl(null, Validators.required),
+      category: new FormControl(null, Validators.required),
+      subcategory: new FormControl(null, Validators.required),
+    });
+    this.productCategories = new Array();
+
+  }
 
   ngOnInit() {
     this.categoryService.getCategories()
     .subscribe(categories => {
       this.categories = categories;
     })
-    this.productCategories = new Array<number>()
+    this.file = document.getElementById('image');
+    this.file.addEventListener('change', (event: any) => {
+      const files = event.target.files;
+      this.image = files[0];
+      }
+    );
   }
 
 
@@ -54,25 +67,39 @@ export class AddProductComponent implements OnInit{
     console.log(this.productCategories)
   }
 
-
-  onSubmit(): any {
-
-    this.product = {
+    onSubmit(): any {
+    console.log(this.productForm)
+    console.log(this.productCategories)
+    console.log(this.image)
+    this.newProduct = {
       label: this.productForm.get('label')?.value,
       description: this.productForm.get('description')?.value,
-      image: this.productForm.get('image')?.value,
+      // image: this.image,
       price: this.productForm.get('price')?.value,
-      category: this.productCategories,
+      category: this.productCategories
     }
-    // save in local storage informations sent back by login()
-    this.productService.addProduct(this.product).subscribe(
+    console.log(this.newProduct)
+
+    this.formData = new FormData();
+    this.formData.append('label', this.productForm.get('label')?.value,)
+    this.formData.append('description', this.productForm.get('description')?.value)
+    this.formData.append('price', this.productForm.get('price')?.value)
+    this.formData.append('category', this.productCategories)
+    this.formData.append('image', this.image, this.image.name)
+    console.log(this.formData)
+    this.productService.addProduct(this.formData).subscribe(
       response => {
         console.log(response);
+        alert("Nous venez d'ajouter le produit suivant : " + response.label)
+        this.router.navigate(['/intranet'])
+
       },
       // display error message if wronf credentials
       error => {
         console.error('Erreur de connexion', error);
       }
-    )
+  )
+
   }
 }
+

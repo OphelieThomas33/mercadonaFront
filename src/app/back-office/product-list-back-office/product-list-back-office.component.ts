@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/catalog/products/product';
 import { ProductService } from 'src/app/catalog/products/product.service';
@@ -31,9 +31,6 @@ export class ProductListBackOfficeComponent implements AfterContentInit {
     });
   }
 
-  // ngOnInit(): void {
-  //   this.getProducts();
-  // }
 
   ngAfterContentInit() {
     this.getProducts();

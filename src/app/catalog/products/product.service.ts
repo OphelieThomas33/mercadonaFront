@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of, switchMap, tap } from 'rxjs';
+import { Observable, catchError, of, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Product } from './product';
 import { Discount } from '../discount';
@@ -22,7 +22,7 @@ export class ProductService {
     return this.http.get<Product>(`${environment.apiUrl}/api/products-list/${productId}`)
   }
 
-  addProduct(product: Product): Observable<Product> {
+  addProduct(product: any): Observable<Product> {
     return this.http.post<Product>(`${environment.apiUrl}/api/products/`, product).pipe(
       tap((response) => this.log(response)),
       catchError((error) => this.handleError(error, undefined))

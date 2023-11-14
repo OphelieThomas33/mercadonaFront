@@ -18,17 +18,18 @@
       <!-- description field -->
       <div class="mb-3 row align-items-center">
         <label for="description" class="form-label fw-bold  col-2 me-3">Description</label>
-        <input type="text" class="form-control col" id="description"
+        <textarea class="form-control col" id="description"
               placeholder="Renseigner une description"
               required
               formControlName="description"
             >
+        </textarea>
       </div>
       <!-- image field -->
       <div class="mb-3 row align-items-center">
         <label for="image" class="form-label  fw-bold col-2 me-3">Image</label>
         <input type="file" class="form-control col" id="image"
-              value="${environment.apiUrl}/assets/images/"
+              name="image"
               accept="image/png, image/jpeg"
               required
               formControlName="image"
@@ -60,7 +61,7 @@
                 value="{{category.id}}"
                 (change)="getCategoriesId($event, category.id)"
                 >
-                <label class="ms-3 fw-bold"> {{category.label}}
+                <label for="category" class="ms-3 fw-bold"> {{category.label}}
                   <div class="d-flex flex-column">
                     <ng-container *ngFor="let subcategory of category.subcategories" >
                       <div class="d-flex flex-row ">
@@ -70,9 +71,8 @@
                               name="{{subcategory['id']}}"
                               value="{{subcategory['id']}}"
                               (change)="getCategoriesId($event, subcategory['id'])"
-
                               >
-                        <label class="ms-3 fw-normal">{{subcategory['label']}}</label>
+                        <label for="subcategory" class="ms-3 fw-normal">{{subcategory['label']}}</label>
                       </div>
                     </ng-container>
                   </div>
