@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { CategoriesService } from '../../categories/categories.service';
-import { Category } from '../../categories/category';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -27,6 +26,8 @@ export class AddDiscountComponent implements OnInit {
   discount: any;
   modifiedProduct: any;
   messageAddDiscount: boolean = false;
+  productForm: any;
+  formDiscount: boolean = true;
 
   constructor(
     private categoryService: CategoriesService,
@@ -63,32 +64,44 @@ export class AddDiscountComponent implements OnInit {
       response => {
         this.discount = response;
         this.messageAddDiscount = true;
+        this.formDiscount = false;
       },
       // display error message
       error => {
+        if(error == 401) {
+          alert("Vous n'êtes pas authorisé à effectuer cette opération")
+        } else {
+          alert("Une erreur est survenue, nous n'avons pas pu créer la promotion saisie.")
+        }
         console.error('Erreur de connexion', error);
         this.messageAddDiscount = false;
+        this.formDiscount = true;
       },
     )
 
   }
 
   validDiscount() {
-      this.modifiedProduct = {
+      this.productForm = {
         label: this.product.label,
         description: this.product.description,
         price: this.product.price,
-        category: [this.product.category[0]['id'], this.product.category[0]['id'] ],
+        category: [12, 5],
         discount: this.discount.id
       }
-      this.productService.modifyProduct(this.product.id, this.modifiedProduct).subscribe(
+      console.log(this.modifiedProduct)
+      this.productService.modifyProduct(this.product.id, this.productForm).subscribe(
         response => {
           console.log(response)
           this.router.navigate(['/intranet'])
         },
         // display error message
         error => {
+          if(error == 401) {
+            alert("Vous n'êtes pas authorisé à effectuer cette opération")
+          }
           console.error('Erreur de connexion', error);
+          alert("Une erreur est survenue, nous n'avons pas pu appliquer la promotion au produit sélectionné")
         },
       )
 

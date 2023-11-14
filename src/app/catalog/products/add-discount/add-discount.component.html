@@ -1,7 +1,7 @@
 <!-- add discount page -->
 <section class="d-grid container">
   <div class="row">
-    <div class="col">
+    <div class="">
       <h3 class="text-center m-3 ">{{product.label}}</h3>
       <div class="row ">
         <div class="product col">
@@ -18,9 +18,8 @@
             </div>
           </div>
         </div>
-
-        <div class="discount-form col d-flex align-items-center">
-          <form *ngIf="!messageAddDiscount" [formGroup]="discountForm" (ngSubmit)="createDiscount()">
+        <div *ngIf="!messageAddDiscount && formDiscount" class="discount-form col d-flex align-items-center">
+          <form  [formGroup]="discountForm" (ngSubmit)="createDiscount()">
             <div class="form-group d-grid ">
               <!-- start date field -->
                 <div class="mb-3 row align-items-center">
@@ -31,7 +30,6 @@
                         placeholder=""
                         formControlName="startDate"
                         >
-
               </div>
               <!-- end date field -->
               <div class="mb-3 row align-items-center">
@@ -54,9 +52,8 @@
             </div>
             <button  type="submit" class="btn btn-success mt-3" id="btn-login">Ajouter la promotion</button>
           </form>
-
-    </div>
-        <div class="col d-flex flex-column justify-content-center" *ngIf="messageAddDiscount">
+       </div>
+        <div *ngIf="messageAddDiscount && !formDiscount" class="col d-flex flex-column justify-content-center" >
           <div>
             <h6>Vous avez saisi les informations suivantes :</h6>
             <div>
