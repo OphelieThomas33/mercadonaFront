@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { CategoriesService } from '../../categories/categories.service';
 import { Category } from '../../categories/category';
@@ -6,13 +6,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { environment } from 'src/environments/environment';
+import { Product } from '../product';
 
 @Component({
   selector: 'mcd-add-discount',
   templateUrl: './add-discount.component.html',
   styleUrls: ['./add-discount.component.css']
 })
-export class AddDiscountComponent {
+export class AddDiscountComponent implements OnInit {
 
   envUrl : any = environment.apiUrl;
 
@@ -22,7 +23,7 @@ export class AddDiscountComponent {
     percentage:  new FormControl(''),
   })
 
-  product: any;
+  product: Product;
   discount: any;
   modifiedProduct: any;
   messageAddDiscount: boolean = false;
@@ -77,7 +78,7 @@ export class AddDiscountComponent {
         label: this.product.label,
         description: this.product.description,
         price: this.product.price,
-        category: [this.product.category[0]['id'], this.product.category[1]['id'] ],
+        category: [this.product.category[0]['id'], this.product.category[0]['id'] ],
         discount: this.discount.id
       }
       this.productService.modifyProduct(this.product.id, this.modifiedProduct).subscribe(

@@ -42,7 +42,6 @@ export class ProductListBackOfficeComponent implements AfterContentInit {
 
   addDiscount(e: any, id: number) {
     this.router.navigate(['/intranet/produit/', id])
-    this.products = [];
   }
 
   modifyProduct(product: Product) {
