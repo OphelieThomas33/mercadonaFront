@@ -19,7 +19,7 @@ export class ProductService {
 
   // request to the api to get one product by id
   getProductById(productId: number): Observable<Product> {
-    return this.http.get<Product>(`${environment.apiUrl}/api/products-list/${productId}`)
+    return this.http.get<Product>(`${environment.apiUrl}/api/products-list/${productId}/`)
   }
 
   addProduct(product: any): Observable<Product> {

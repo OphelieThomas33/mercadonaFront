@@ -35,8 +35,10 @@
             <div *ngIf="!product.has_valid_discount"><a (click)="addDiscount($event, product.id)"><i class="icon-add-discount bi bi-plus-circle-fill"></i></a></div>
           </td>
           <td class="text-center align-middle">
-              <div *ngFor="let discount of product.discount | keyvalue">
-              <div *ngIf="discount.key == 'percentage'">{{ discount.value }} %</div>
+              <div *ngIf="product.has_valid_discount">
+                <div *ngFor="let discount of product.discount | keyvalue">
+                <div *ngIf="discount.key == 'percentage'">{{ discount.value }} %</div>
+              </div>
             </div>
           </td>
           <td class="text-center align-middle">
