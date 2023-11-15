@@ -1,6 +1,5 @@
 import { AfterContentInit, Component } from '@angular/core';
 import { ProductService } from '../product.service';
-import { CategoriesService } from '../../categories/categories.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 

@@ -9,19 +9,26 @@
           <label for="label" class="form-label  fw-bold  col-2 me-3 vw-20">Libellé</label>
           <input type="text" class="form-control col" id="label"
                 maxlength="50"
+                name="label"
                 required
                 placeholder="Renseigner le libellé du produit"
                 formControlName="label"
+                pattern="^[a-zA-Z0-9àéèç]{3,50}$"
                 >
+          <div *ngIf="errorValidation"
+
+              class="fw-lighter fs-6 text-danger">
+              Le libellé doit comprendre entre 3 et 50 caractères.
+          </div>
 
       </div>
       <!-- description field -->
       <div class="mb-3 row align-items-center">
         <label for="description" class="form-label fw-bold  col-2 me-3">Description</label>
         <textarea class="form-control col" id="description"
-              placeholder="Renseigner une description"
-              required
+              placeholder="Renseigner une description (facultatif)"
               formControlName="description"
+              pattern="^[a-zA-Z0-9àéèç]$"
             >
         </textarea>
       </div>
@@ -34,15 +41,24 @@
               required
               formControlName="image"
             >
+        <div *ngIf="errorValidation"
+            class="fw-lighter fs-6  text-danger">
+            L'image doit être en format .png ou .jpeg.
+        </div>
       </div>
       <!-- price field -->
       <div class="mb-3 row align-items-center">
         <label for="price" class="form-label fw-bold  col-2 me-3">Prix</label>
         <input type="number" class="form-control col" id="price"
-              required
               placeholder="Renseigner le prix de base en euros"
               formControlName="price"
+              pattern="^\d{0,8}(\.\d{1,2})?$"
+              required
             >
+        <div *ngIf="errorValidation"
+            class=" fw-lighter fs-6  text-danger">
+            Le prix doit être inférieur à 99 999 999 et ne peut comprendre que 2 chiffres décimaux.
+        </div>
       </div>
       <!-- category field -->
       <div class="mb-3 d-grid align-items-center">
@@ -56,6 +72,7 @@
               <div class="d-flex align-items-start col mb-3">
                 <input type="checkbox" id="category"
                 class="mt-1 filled-in"
+                required
                 formControlName="category"
                 name="{{category.id}}"
                 value="{{category.id}}"
@@ -82,9 +99,24 @@
           </ng-container>
         </div>
       </div>
+      <div *ngIf="errorValidation"
+          class="fw-lighter fs-6 text-danger">
+          Vous devez sélectionner au moins une catégorie.
+      </div>
 
-      <!-- error message if credentials are incorrect  -->
-      <div *ngIf=""><span class="text-danger"></span></div>
+      <!-- error message if validation stopped  -->
+      <div *ngIf="errorValidation" class="fw-lighter fs-6  text-center">
+        <span class="text-danger">
+          Une erreur s'est produite, la création de votre produit n'a pu aboutir.<br>
+          Veuillez vérifier les informations saisies.
+        </span></div>
+      <!-- confirmation of the validation of the addition of the product  -->
+      <div *ngIf="validationAdd" class="text-center">
+        <span class="text-success text-center">
+          Votre produit vient d'être ajouté au catalogue.<br>
+          Vous allez être redirigé vers votre tableau de bord.
+        </span>
+      </div>
       <!-- submit button -->
       <button type="submit" class="btn btn-success mt-3" id="btn-login">Ajouter au catalogue</button>
     </div>

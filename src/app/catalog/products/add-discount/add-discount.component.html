@@ -25,9 +25,7 @@
                 <div class="mb-3 row align-items-center">
                   <label for="startDate" class="form-label  fw-bold  col me-3 vw-20">Début de la promotion</label>
                   <input type="date" class="form-control col" id="startDate"
-                        maxlength="50"
                         required
-                        placeholder=""
                         formControlName="startDate"
                         >
               </div>
@@ -35,7 +33,6 @@
               <div class="mb-3 row align-items-center">
                 <label for="endDate" class="form-label fw-bold  col me-3">Fin de la promotion</label>
                 <input type="date" class="form-control col" id="endDate"
-                      placeholder=""
                       required
                       formControlName="endDate"
                     >
@@ -44,18 +41,21 @@
                 <div class="mb-3 row align-items-center">
                   <label for="percentage" class="form-label fw-bold  col me-3">Remise en %</label>
                   <input type="number" class="form-control col" id="percentage"
-                        placeholder="Entrer un nombre enter (ex: 50)"
                         required
                         formControlName="percentage"
+                        pattern="^\d{0,4}(\.\d{0,2})?$"
                       >
+                  <p class="fw-lighter fs-6">Saisissez le montant de la remise en % (exemple: 20 pour 20%)</p>
                 </div>
             </div>
-            <button  type="submit" class="btn btn-success mt-3" id="btn-login">Ajouter la promotion</button>
+            <div class="d-flex justify-content-center">
+              <button  type="submit" class="btn btn-success mt-3" id="btn-login">Ajouter la promotion</button>
+            </div>
           </form>
        </div>
         <div *ngIf="messageAddDiscount && !formDiscount" class="col d-flex flex-column justify-content-center" >
           <div>
-            <h6>Vous avez saisi les informations suivantes :</h6>
+            <h6 class="text-center fw-bold">Vous venez de créer la promotion suivante :</h6>
             <div>
               <div><span>Date de début : {{discount.start_date | date: 'dd/MM/yy'}}</span></div>
               <div><span>Date de fin : {{discount.end_date | date: 'dd/MM/yy'}}</span></div>
@@ -65,7 +65,9 @@
           <div>
             <span>Cliquer sur le bouton ci-dessous pour appliquer la promotion au produit sélectionné.</span>
           </div>
-          <button (click)="validDiscount()" class="btn btn-success m-3">Appliquer la promotion</button>
+          <div class="d-flex justify-content-center">
+            <button (click)="validDiscount()" class="btn btn-success m-3">Appliquer la promotion</button>
+          </div>
         </div>
 
       </div>

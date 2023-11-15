@@ -50,7 +50,7 @@ export class ProductService {
 
   handleError(error: Error, errorValue: any) {
     console.error(error);
-    return of(errorValue);
+    return of(errorValue)
   }
 
 }
