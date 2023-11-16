@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { UserService } from 'src/app/auth/services/user.service';
+import { User } from 'src/app/auth/user';
 
 @Component({
   selector: 'mcd-user-profile',
@@ -8,11 +10,13 @@ import { UserService } from 'src/app/auth/services/user.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  profile: any;
+  profile: User;
 
   constructor(
     private userService: UserService,
-  ) {}
+  ) {
+    this.profile = new User()
+  }
 
   // returns employee informations
   ngOnInit(): void {

@@ -22,10 +22,6 @@ export class HeaderComponent {
     private router: Router,
   ) { }
 
-  // goToAdminPanel(): any {
-  //   window.location.href = `${environment.apiUrl}/admin`;
-  // }
-
   ngDoCheck() {
     this.isLoggedIn = this.userService.isLoggedIn
   }

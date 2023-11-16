@@ -1,6 +1,6 @@
 <!-- section : product list to manage -->
 <section class="product-list-bo container-fluid table-responsive">
-  <h3 class="title m-3 text-center">Liste des produits en ligne</h3>
+  <h3 class="title m-3 text-center">{{title}}</h3>
   <!-- header table -->
   <table class="table">
     <thead>
@@ -32,16 +32,16 @@
           <td class="text-center align-middle">{{product.price}}€</td>
           <td class="text-center align-middle">
             <div *ngIf="product.has_valid_discount"><i class="icon-check bi bi-check-circle-fill"></i></div>
-            <div *ngIf="!product.has_valid_discount"><a (click)="addDiscount($event, product.id)"><i class="icon-add-discount bi bi-plus-circle-fill"></i></a></div>
+            <div *ngIf="!product.has_valid_discount"><a (click)="addDiscount($event, product.id)" class="button-add-adiscount"><i class="icon-add-discount bi bi-plus-circle-fill"></i></a></div>
           </td>
-          <td class="text-center align-middle">
+          <td class="text-center align-middle discount-percentage">
               <div *ngIf="product.has_valid_discount">
                 <div *ngFor="let discount of product.discount | keyvalue">
                 <div *ngIf="discount.key == 'percentage'">{{ discount.value }} %</div>
               </div>
             </div>
           </td>
-          <td class="text-center align-middle">
+          <td class="text-center align-middle discounted-price">
             <div *ngIf="product.has_valid_discount">{{product.discounted_price}}€</div>
           </td>
           <td class="text-center align-middle">

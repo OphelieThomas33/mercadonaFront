@@ -2,7 +2,7 @@
 <section>
   <div *ngIf="logoutMessage" class="text-center"><span class="text-success">Vous venez de vous déconnecter.</span></div>
   <div class="login container">
-    <h3 class="my-3">Login</h3>
+    <h3 class="my-4">Formulaire de connexion</h3>
     <!-- login form -->
      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -11,6 +11,7 @@
           <label for="username" class="form-label">Identifiant</label>
           <input type="text" class="form-control" id="username"
                 required
+                placeholder="Saisir votre identifiant"
                 formControlName="username"
                 >
         <!-- password field -->
@@ -19,6 +20,7 @@
           <label for="password" class="form-label">Mot de passe</label>
           <input type="password" class="form-control" id="password"
                 required
+                placeholder="Saisir votre mot de passe"
               formControlName="password"
               >
         </div>

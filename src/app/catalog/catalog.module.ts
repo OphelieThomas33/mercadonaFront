@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsByCategoryComponent } from './products/products-by-category/products-by-category.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
@@ -11,6 +11,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AddProductComponent } from './products/add-product/add-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddDiscountComponent } from './products/add-discount/add-discount.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const catalogRoutes: Routes = [
   { path: '', component: HomePageComponent },
@@ -30,15 +31,22 @@ const catalogRoutes: Routes = [
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
+    RouterModule,
     BrowserModule,
+    UiModule,
     FormsModule,
     ReactiveFormsModule,
-    UiModule,
-    RouterModule.forRoot(catalogRoutes),
+    RouterModule.forChild(catalogRoutes),
   ],
   exports: [
     ProductListComponent,
     AddProductComponent,
+    RouterModule,
+  ],
+  schemas: [ NO_ERRORS_SCHEMA ],
+  providers: [
+
   ]
 })
 export class CatalogModule { }

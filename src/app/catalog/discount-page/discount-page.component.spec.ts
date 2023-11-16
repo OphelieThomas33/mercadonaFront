@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DiscountPageComponent } from './discount-page.component';
+import { ProductService } from '../products/product.service';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('DiscountPageComponent', () => {
   let component: DiscountPageComponent;
@@ -8,7 +12,13 @@ describe('DiscountPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DiscountPageComponent ]
+      declarations: [ DiscountPageComponent ],
+      imports: [HttpClientTestingModule],
+      providers: [
+        ProductService,
+        HttpClient
+      ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
 

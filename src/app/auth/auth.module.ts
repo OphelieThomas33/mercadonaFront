@@ -16,10 +16,10 @@ import { RouterModule } from '@angular/router';
 
   ],
   imports: [
-    CommonModule,
-    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    CommonModule,
+    BrowserModule,
     HttpClientModule,
     RouterModule,
   ],
@@ -29,6 +29,6 @@ import { RouterModule } from '@angular/router';
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorComponent, multi: true},
     AuthService,
     InterceptorComponent,
-  ]
+  ],
 })
 export class AuthModule { }

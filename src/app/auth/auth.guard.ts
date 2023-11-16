@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserService } from './services/user.service';
 
@@ -14,9 +14,7 @@ export class AuthGuard implements CanActivate {
   ) {}
 
   // connection conditions for secure pages
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> {
+  canActivate(): Observable<boolean> {
       // authorization check
       return new Observable((observer) => {
         this.userService.getProfile().subscribe(profile => {

@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class ProductListBackOfficeComponent implements AfterContentInit {
 
   envUrl : any = environment.apiUrl;
-  title: string = "LISTE DE PRODUITS";
+  title: string = "LISTE DES PRODUITS EN LIGNE";
   subtitle: string = "";
   products: Product[];
   product: Product;
@@ -23,6 +23,7 @@ export class ProductListBackOfficeComponent implements AfterContentInit {
     private router: Router
     ) {}
 
+
   getProducts() {
     // returns the product list to manage
     this.productService.getProducts()
@@ -32,11 +33,12 @@ export class ProductListBackOfficeComponent implements AfterContentInit {
   }
 
 
+  // run function after content of page is init
   ngAfterContentInit() {
     this.getProducts();
   }
 
-
+  // navigate to product by id
   addDiscount(e: any, id: number) {
     this.router.navigate(['/intranet/produit/', id])
   }
@@ -45,6 +47,7 @@ export class ProductListBackOfficeComponent implements AfterContentInit {
 
   }
 
+  // empty product array to force the data to be updated on on init
   ngOnDestroy() {
     this.products = [];
   }

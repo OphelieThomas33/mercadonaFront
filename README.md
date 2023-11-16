@@ -61,7 +61,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ### Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the unit tests via [Karma].
+The command will automatically tell you the code coverage status.
 
 ### Running end-to-end tests
 

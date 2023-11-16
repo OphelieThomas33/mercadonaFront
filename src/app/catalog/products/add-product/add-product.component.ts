@@ -97,7 +97,7 @@ export class AddProductComponent implements OnInit {
             setTimeout(() =>
             {
               this.router.navigate(['/intranet']);
-            }, 4000)
+            }, 4500)
           }
 
 

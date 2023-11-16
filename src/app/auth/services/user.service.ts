@@ -30,7 +30,7 @@ export class UserService {
     };
 
   // get the user profile
-  getProfile() {
+  getProfile() : Observable<any> {
     return new Observable((observer) => {
       // return profile if it's already authenticated
       if (this.profile) {

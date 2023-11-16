@@ -14,12 +14,18 @@ export class ProductService {
 
   // request to the api to get all the products of the database
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${environment.apiUrl}/api/products-list/`)
+    return this.http.get<Product[]>(`${environment.apiUrl}/api/products-list/`).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, undefined))
+    );
   }
 
   // request to the api to get one product by id
   getProductById(productId: number): Observable<Product> {
-    return this.http.get<Product>(`${environment.apiUrl}/api/products-list/${productId}/`)
+    return this.http.get<Product>(`${environment.apiUrl}/api/products-list/${productId}/`).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, undefined))
+    );
   }
 
   addProduct(product: any): Observable<Product> {
