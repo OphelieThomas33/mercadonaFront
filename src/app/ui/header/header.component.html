@@ -18,13 +18,19 @@
         </li>
       </ul>
       <div>
-        <button *ngIf="!isLoggedIn" type="button" class="btn btn-success">
+        <button *ngIf="!isLoggedIn" type="button" class="btn btn-success nav-item">
           <a (click)="login()" id="login">Connexion</a>
         </button>
-        <button *ngIf="isLoggedIn" type="button" class="btn btn-success">
+      <div class="nav-button">
+        <button *ngIf="isLoggedIn" type="button" class="btn btn-success mt-2 nav-item">
+          <a [routerLink]="['/intranet']" id="link-intranet">Mon espace entreprise</a>
+        </button>
+        <button *ngIf="isLoggedIn" type="button" class="btn btn-success mt-2 nav-item">
           <a (click)="logout()" id="logout">Déconnexion</a>
         </button>
+      </div>
       </div>
     </div>
   </nav>
 </header>
+

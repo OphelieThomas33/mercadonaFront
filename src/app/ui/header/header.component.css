@@ -22,7 +22,22 @@
   }
 }
 
-#login {
+#login, #link-intranet {
   color: white;
   text-decoration: none;
  }
+
+@media screen and (max-width: 992px) {
+  .nav-button {
+    display: inline-flex;
+    flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 992px) {
+  .nav-button {
+    display: flex;
+    flex-direction: row;
+    gap:1rem ;
+    }
+}
