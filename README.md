@@ -71,6 +71,27 @@ The command will automatically tell you the code coverage status.
 Run `ng build --configuration=production` to build the project with environment.prod.ts file. 
 The build artifacts will be stored in the `dist/` directory.
 
+### Security
+
+For security reasons, it is advisable to install an SSL certificate with your site.     
+The SSL certificate allows secure browsing (https).
+
 ## Instructions for use
 
 A “manuel-utilisation-site-mercadona” file written in French is attached to this project to help you manage the front office and back office of this site.
+
+## Optimizations 
+
+List of upcoming optimizations : 
+- Display new product first
+- Customize error messages according to error codes
+- Refactor code with more typing
+- More comments in the code
+
+## Future developments
+
+Here is the list of upcoming changes :
+- Back-office : modify product
+- Back-office : delete product
+- Front-office : sort the products on the promotion page by category
+- Front-office : get a page with product details
