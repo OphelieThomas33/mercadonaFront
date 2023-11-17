@@ -34,12 +34,12 @@ To run this project, you will need to add the following environment variables to
 
 ### environment.ts
 
-Code to copy into your file
+Code to copy into your file and change localhost port if you don't use 8000 for your django project
 
 ```typescript
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8000'
+  apiUrl: 'http://localhost:8000' # default port use for django project
 };
 ```
 
@@ -64,10 +64,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 Run `ng test` to execute the unit tests via [Karma].
 The command will automatically tell you the code coverage status.
 
-### Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
 ## Deploy
 
 ### Build
@@ -75,4 +71,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 Run `ng build --configuration=production` to build the project with environment.prod.ts file. 
 The build artifacts will be stored in the `dist/` directory.
 
+## Instructions for use
 
+A “manuel-utilisation-site-mercadona” file written in French is attached to this project to help you manage the front office and back office of this site.

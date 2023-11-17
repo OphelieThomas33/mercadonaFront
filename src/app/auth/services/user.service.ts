@@ -4,8 +4,6 @@ import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
-import { User } from '../user';
-
 
 @Injectable({
   providedIn: 'root'
