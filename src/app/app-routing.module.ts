@@ -42,7 +42,7 @@ const routes: Routes = [
       pathMatch: 'full'
     },
 ]},
-  { path: '**', component: PageNotFoundComponent}
+  { path: '**', component: PageNotFoundComponent, pathMatch: 'full'}
 
 ];
 

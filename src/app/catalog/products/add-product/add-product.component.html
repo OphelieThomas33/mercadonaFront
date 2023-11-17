@@ -118,7 +118,7 @@
         </span>
       </div>
       <!-- submit button -->
-      <button type="submit" class="btn btn-success mt-3" id="btn-login">Ajouter au catalogue</button>
+      <button *ngIf="!validationAdd" type="submit" class="btn btn-success mt-3" id="btn-login">Ajouter au catalogue</button>
     </div>
   </form>
 </div>

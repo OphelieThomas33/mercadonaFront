@@ -8,9 +8,15 @@
       <blockquote class="blockquote mb-0">
         <p>Bienvenue {{ profile.first_name }} {{ profile.last_name }} </p>
       </blockquote>
-      <!-- access to the product add form -->
-      <div class="me-3">
-        <button routerLink="/intranet/nouveau-produit" class="btn btn-success"><a >Ajouter un produit</a></button>
+      <div class="d-flex justify-content-between end">
+        <!-- access to the product add form -->
+        <div class="me-3">
+          <button routerLink="/intranet/nouveau-produit" class="btn btn-success"><a >Ajouter un produit</a></button>
+        </div>
+        <!-- go back to dashboard -->
+        <div class="me-3">
+          <button routerLink="/intranet/" class="btn btn-success"><a >Mon tableau de bord</a></button>
+        </div>
       </div>
     </div>
   </div>

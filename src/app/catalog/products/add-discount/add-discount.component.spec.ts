@@ -33,4 +33,18 @@ describe('AddDiscountComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return number[] with category id', () => {
+    component.product.category = [
+      {
+      id:1,
+      label: 'Fruit',
+      parent: null,
+      subcategories: [],
+      products:[],
+    }]
+    const expectedArray : number[] = [1];
+    const result: number[] = component.getCategoriesId();
+    expect(result).toEqual(expectedArray)
+  })
 });

@@ -38,13 +38,9 @@ export class ProductListBackOfficeComponent implements AfterContentInit {
     this.getProducts();
   }
 
-  // navigate to product by id
+  // navigate to product by id  to add a discount
   addDiscount(e: any, id: number) {
     this.router.navigate(['/intranet/produit/', id])
-  }
-
-  modifyProduct(product: Product) {
-
   }
 
   // empty product array to force the data to be updated on on init

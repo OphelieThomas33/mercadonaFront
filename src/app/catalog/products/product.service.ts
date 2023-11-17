@@ -28,6 +28,7 @@ export class ProductService {
     );
   }
 
+  // request to the api to add new product
   addProduct(product: any): Observable<Product> {
     return this.http.post<Product>(`${environment.apiUrl}/api/products/`, product).pipe(
       tap((response) => this.log(response)),
@@ -35,6 +36,7 @@ export class ProductService {
     );
   }
 
+  // request to the api to modify product
   modifyProduct(id: number, product: Product): Observable<Product> {
     return this.http.put<Product>(`${environment.apiUrl}/api/products/${id}/`, product).pipe(
       tap((response) => this.log(response)),
@@ -42,6 +44,7 @@ export class ProductService {
     );
   }
 
+  // request to the api to add discount
   addDiscount(discount: Discount): Observable<Discount> {
     return this.http.post<Product>(`${environment.apiUrl}/api/discounts/`, discount).pipe(
       tap((response) => this.log(response)),
@@ -49,11 +52,12 @@ export class ProductService {
     );
   }
 
-
+  // display response on console
   log(response: any) {
     console.table(response);
   }
 
+  // display error on console
   handleError(error: Error, errorValue: any) {
     console.error(error);
     return of(errorValue)

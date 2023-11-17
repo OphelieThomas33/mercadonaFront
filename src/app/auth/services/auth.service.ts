@@ -14,8 +14,6 @@ export class AuthService {
 
   httpOptions: any;
   user: any;
-  currentUser: any;
-
 
   constructor(
     private http: HttpClient,

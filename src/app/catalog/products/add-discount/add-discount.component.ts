@@ -1,19 +1,20 @@
-import { AfterContentInit, Component } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Product } from '../product';
 import { Discount } from '../../discount';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'mcd-add-discount',
   templateUrl: './add-discount.component.html',
   styleUrls: ['./add-discount.component.css']
 })
-export class AddDiscountComponent implements AfterContentInit {
+export class AddDiscountComponent implements OnInit {
 
-  envUrl : any = environment.apiUrl;
+  envUrl = environment.apiUrl;
 
   discountForm: FormGroup = new FormGroup({
     startDate: new FormControl(null, Validators.required),
@@ -21,7 +22,7 @@ export class AddDiscountComponent implements AfterContentInit {
     percentage:  new FormControl(null, Validators.required),
   })
 
-  product: Product;
+  product: any;
   discount: any;
   modifiedProduct: any;
   messageAddDiscount: boolean = false;
@@ -32,34 +33,36 @@ export class AddDiscountComponent implements AfterContentInit {
   errorMessage: boolean = false;
 
   constructor(
-    private productService: ProductService,
     private route: ActivatedRoute,
+    private productService: ProductService,
     private router: Router,
-  ) {}
+  ) {
+    this.discount = new Discount();
+    this.product = new Product();
+  }
 
-  ngAfterContentInit() {
+  ngOnInit() {
     // listen the api path with id param
     this.route.params.subscribe(
       params => {
-        const id = +params['id'];
+        const id = params['id'];
         this.productService.getProductById(+id)
         .subscribe(
-          (product: Product) => {
-          // returns selected product
-          this.product = product;
+            product => {
+            // returns selected product
+            this.product = product;
 
-        });
+          });
       }
     )
-    this.product = new Product();
-    this.discount = new Discount();
   }
 
   // get only id of categories list
-  getCategoriesId() {
+  getCategoriesId(): number[] {
     this.productCategories = new Array()
     this.product.category.forEach(
-      (key) => this.productCategories.push(key['id']))
+      (key: any) => this.productCategories.push(key['id']))
+    return this.productCategories
   }
 
   createDiscount(): any {
@@ -98,7 +101,6 @@ export class AddDiscountComponent implements AfterContentInit {
 
   validDiscount() {
     this.getCategoriesId()
-    console.log(this.productCategories)
     this.productForm = {
       label: this.product.label,
       description: this.product.description,
@@ -107,19 +109,17 @@ export class AddDiscountComponent implements AfterContentInit {
       discount: this.discount.id
     };
 
-      console.log(this.productForm)
-      console.log(this.modifiedProduct);
       this.productService.modifyProduct(this.product.id, this.productForm).subscribe(
-        response => {
+        (response: undefined | Product) => {
           if(response == undefined) {
             this.validationDiscount = false;
+          } else {
+            this.validationDiscount = true;
+            setTimeout(() =>
+            {
+            this.router.navigate(['/intranet']);
+            }, 4500)
           }
-          console.log(response)
-          this.validationDiscount = true;
-          setTimeout(() =>
-          {
-          this.router.navigate(['/intranet']);
-          }, 4500)
         },
         // display error message
         error => {

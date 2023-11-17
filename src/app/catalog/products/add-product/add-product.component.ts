@@ -108,7 +108,13 @@ export class AddProductComponent implements OnInit {
           console.log(error)
         })
       }
-    }
+
+  ngOnDestroy() {
+    this.errorValidation = false;
+    this.validationAdd = false;
+  }
+
+}
 
 
 

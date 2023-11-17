@@ -14,7 +14,7 @@
         <th class="header-cell text-center align-middle" scope="col">Promotion en cours</th>
         <th class="header-cell text-center align-middle" scope="col">Pourcentage de remise</th>
         <th class="header-cell text-center align-middle" scope="col">Prix remisé</th>
-        <th class="header-cell text-center align-middle" scope="col">Modifier</th>
+        <!-- <th class="header-cell text-center align-middle" scope="col">Modifier</th> -->
       </tr>
     </thead>
     <!-- body table -->
@@ -32,7 +32,7 @@
           <td class="text-center align-middle">{{product.price}}€</td>
           <td class="text-center align-middle">
             <div *ngIf="product.has_valid_discount"><i class="icon-check bi bi-check-circle-fill"></i></div>
-            <div *ngIf="!product.has_valid_discount"><a (click)="addDiscount($event, product.id)" class="button-add-adiscount"><i class="icon-add-discount bi bi-plus-circle-fill"></i></a></div>
+            <div *ngIf="!product.has_valid_discount"><a [routerLink]="['/intranet/produit/', product?.id]" class="button-add-adiscount"><i class="icon-add-discount bi bi-plus-circle-fill"></i></a></div>
           </td>
           <td class="text-center align-middle discount-percentage">
               <div *ngIf="product.has_valid_discount">
@@ -44,9 +44,9 @@
           <td class="text-center align-middle discounted-price">
             <div *ngIf="product.has_valid_discount">{{product.discounted_price}}€</div>
           </td>
-          <td class="text-center align-middle">
-            <div><a (click)="modifyProduct(product)"></a><i class="icon-modify bi bi-pencil-fill"></i></div>
-          </td>
+          <!-- <td class="text-center align-middle">
+            <div><a (click)="modifyProduct($event, product.id)"><i class="icon-modify bi bi-pencil-fill"></i></a></div>
+          </td> -->
         </tr>
       </ng-container>
     </tbody>

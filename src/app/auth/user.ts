@@ -13,7 +13,7 @@ export class AccessUser {
 
 // user returned by the page /dj-rest-auth/user/
 export class User {
-  pk: number;
+  id: number;
   username: string;
   email: string;
   first_name: string;
